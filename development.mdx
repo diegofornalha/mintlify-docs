@@ -1,13 +1,14 @@
 ---
-title: 'Development'
-description: 'Learn how to preview changes locally'
+title: "Desenvolvimento"
+description: "Aprenda como visualizar alterações localmente"
 ---
 
 <Info>
-  **Prerequisite**: Please install Node.js (version 19 or higher) before proceeding.
+  **Pré-requisito**: Por favor, instale o Node.js (versão 19 ou superior) antes
+  de prosseguir.
 </Info>
 
-Step 1. Install Mintlify on your OS:
+Passo 1. Instale o Mintlify no seu sistema operacional:
 
 <CodeGroup>
 
@@ -21,31 +22,31 @@ yarn global add mintlify
 
 </CodeGroup>
 
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
+Passo 2. Vá para onde os documentos estão localizados (onde você pode encontrar `mint.json`) e execute o seguinte comando:
 
 ```bash
 mintlify dev
 ```
 
-The documentation website is now available at `http://localhost:3000`.
+O site da documentação agora está disponível em `http://localhost:3000`.
 
-### Custom Ports
+### Portas Personalizadas
 
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
+O Mintlify usa a porta 3000 por padrão. Você pode usar a flag `--port` para personalizar a porta em que o Mintlify é executado. Por exemplo, use este comando para rodar na porta 3333:
 
 ```bash
 mintlify dev --port 3333
 ```
 
-You will see an error like this if you try to run Mintlify in a port that's already taken:
+Você verá um erro como este se tentar executar o Mintlify em uma porta que já está em uso:
 
 ```md
 Error: listen EADDRINUSE: address already in use :::3000
 ```
 
-## Mintlify Versions
+## Versões do Mintlify
 
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
+Cada CLI está vinculada a uma versão específica do Mintlify. Por favor, atualize a CLI se o seu site local parecer diferente da produção.
 
 <CodeGroup>
 
@@ -59,39 +60,39 @@ yarn global upgrade mintlify
 
 </CodeGroup>
 
-## Deployment
+## Implantação
 
 <Tip>
-  Unlimited editors available under the [Pro
-  Plan](https://mintlify.com/pricing) and above.
+  Editores ilimitados disponíveis no [Plano Pro](https://mintlify.com/pricing) e
+  acima.
 </Tip>
 
-You should see the following if the deploy successfully went through:
+Você deve ver o seguinte se a implantação for bem-sucedida:
 
 <Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
+  <img src="/images/checks-passed.png" style={{ borderRadius: "0.5rem" }} />
 </Frame>
 
-## Troubleshooting
+## Solução de Problemas
 
-Here's how to solve some common problems when working with the CLI.
+Aqui está como resolver alguns problemas comuns ao trabalhar com a CLI.
 
 <AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
+  <Accordion title="Mintlify não está carregando">
+    Atualize para o Node v18. Execute `mintlify install` e tente novamente.
   </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
+  <Accordion title="Nenhum arquivo ou diretório no Windows">
+Vá para o diretório `C:/Users/Username/.mintlify/` e remova a pasta `mint`.
+Então, abra o Git Bash neste local e execute `git clone
 https://github.com/mintlify/mint.git`.
 
-Repeat step 3.
+Repita o passo 3.
 
   </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
+  <Accordion title="Recebendo um erro desconhecido">
+    Tente navegar até a raiz do seu dispositivo e excluir a pasta ~/.mintlify.
+    Em seguida, execute `mintlify dev` novamente.
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+Curioso sobre o que mudou em uma versão da CLI? [Confira o changelog da CLI.](/changelog/command-line)
