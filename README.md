@@ -1,32 +1,32 @@
-# Mintlify Starter Kit
+# Kit Inicial Mintlify
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+Clique em `Use this template` para copiar o kit inicial do Mintlify. O kit inicial contém exemplos incluindo
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+- Páginas de guia
+- Navegação
+- Personalizações
+- Páginas de referência de API
+- Uso de componentes populares
 
-### Development
+### Desenvolvimento
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+Instale o [Mintlify CLI](https://www.npmjs.com/package/mintlify) para visualizar as alterações na documentação localmente. Para instalar, use o seguinte comando
 
 ```
 npm i -g mintlify
 ```
 
-Run the following command at the root of your documentation (where mint.json is)
+Execute o seguinte comando na raiz da sua documentação (onde está o mint.json)
 
 ```
 mintlify dev
 ```
 
-### Publishing Changes
+### Publicando Alterações
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+Instale nosso aplicativo do Github para propagar automaticamente as alterações do seu repositório para sua implantação. As alterações serão implantadas em produção automaticamente após o push para o branch padrão. Encontre o link para instalação no seu painel.
 
-#### Troubleshooting
+#### Solução de Problemas
 
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `mint.json`
+- Mintlify dev não está rodando - Execute `mintlify install` para reinstalar as dependências.
+- Página carrega como 404 - Certifique-se de que você está executando em uma pasta com `mint.json`
