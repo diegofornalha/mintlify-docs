@@ -1,86 +1,94 @@
 ---
-title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+title: "Início Rápido"
+description: "Comece a criar uma documentação incrível em menos de 5 minutos"
 ---
 
-## Setup your development
+## Configure seu desenvolvimento
 
-Learn how to update your docs locally and deploy them to the public.
+Aprenda como atualizar seus documentos localmente e implantá-los para o público.
 
-### Edit and preview
+### Edite e visualize
 
 <AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
+  <Accordion icon="github" title="Clone seus documentos localmente">
+    Durante o processo de integração, criamos um repositório no seu Github com o
+    conteúdo dos seus documentos. Você pode encontrar este repositório no nosso
+    [painel de controle](https://dashboard.mintlify.com). Para clonar o
+    repositório localmente, siga estas
+    [instruções](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+    no seu terminal.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
+  <Accordion icon="rectangle-terminal" title="Visualize alterações">
+    Visualizar ajuda a garantir que suas alterações estão como pretendido. Nós
+    criamos uma interface de linha de comando para renderizar essas alterações
+    localmente. 1. Instale o [Mintlify
+    CLI](https://www.npmjs.com/package/mintlify) para visualizar as alterações
+    da documentação localmente com este comando: ``` npm i -g mintlify ``` 2.
+    Execute o seguinte comando na raiz da sua documentação (onde `mint.json`
+    está): ``` mintlify dev ```
   </Accordion>
 </AccordionGroup>
 
-### Deploy your changes
+### Implemente suas alterações
 
 <AccordionGroup>
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
+<Accordion icon="message-bot" title="Instale nosso aplicativo Github">
+  Nosso aplicativo Github implanta automaticamente suas alterações no site dos
+  seus documentos, então você não precisa gerenciar implantações sozinho. Você
+  pode encontrar o link para instalação no seu [painel de
+  controle](https://dashboard.mintlify.com). Uma vez que o bot tenha sido
+  instalado com sucesso, deve haver uma marca de verificação ao lado do hash do
+  commit do repositório.
 </Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
+<Accordion icon="rocket" title="Envie suas alterações">
+  [Faça commit e envie suas alterações para o
   Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
+  para que suas alterações sejam atualizadas no site dos seus documentos. Se
+  você enviar e não ver que o aplicativo Github implantou suas alterações com
+  sucesso, você também pode atualizar seus documentos manualmente através do
+  nosso [painel de controle](https://dashboard.mintlify.com).
 </Accordion>
 
 </AccordionGroup>
 
-## Update your docs
+## Atualize seus documentos
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+Adicione conteúdo diretamente em seus arquivos com a sintaxe MDX e componentes React. Você pode usar qualquer um dos nossos componentes, ou até mesmo construir o seu próprio.
 
 <CardGroup>
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
+<Card
+  title="Estilize Seus Documentos"
+  icon="paintbrush"
+  href="/settings/global"
+>
+  Adicione estilo aos seus documentos com uma marca personalizada.
 </Card>
 
 <Card
-  title="Add API Endpoints"
+  title="Adicione Endpoints de API"
   icon="square-code"
   href="/api-playground/configuration"
 >
-  Implement your OpenAPI spec and enable API user interaction.
+  Implemente sua especificação OpenAPI e habilite a interação do usuário com a
+  API.
 </Card>
 
 <Card
-  title="Integrate Analytics"
+  title="Integre Análises"
   icon="chart-mixed"
   href="/analytics/supported-integrations"
 >
-  Draw insights from user interactions with your documentation.
+  Obtenha insights das interações dos usuários com sua documentação.
 </Card>
 
 <Card
-  title="Host on a Custom Domain"
+  title="Hospede em um Domínio Personalizado"
   icon="browser"
   href="/settings/custom-domain/subdomain"
 >
-  Keep your docs on your own website's subdomain.
+  Mantenha seus documentos no subdomínio do seu próprio site.
 </Card>
 
 </CardGroup>
