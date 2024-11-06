@@ -1,37 +1,37 @@
 ---
-title: 'Navigation'
-description: 'The navigation field in mint.json defines the pages that go in the navigation menu'
-icon: 'map'
+title: "Navegação"
+description: "O campo de navegação no mint.json define as páginas que vão no menu de navegação"
+icon: "map"
 ---
 
-The navigation menu is the list of links on every website.
+O menu de navegação é a lista de links em cada site.
 
-You will likely update `mint.json` every time you add a new page. Pages do not show up automatically.
+Você provavelmente atualizará o `mint.json` toda vez que adicionar uma nova página. As páginas não aparecem automaticamente.
 
-## Navigation syntax
+## Sintaxe de Navegação
 
-Our navigation syntax is recursive which means you can make nested navigation groups. You don't need to include `.mdx` in page names.
+Nossa sintaxe de navegação é recursiva, o que significa que você pode criar grupos de navegação aninhados. Você não precisa incluir `.mdx` nos nomes das páginas.
 
 <CodeGroup>
 
-```json Regular Navigation
+```json Navegação Regular
 "navigation": [
     {
-        "group": "Getting Started",
+        "group": "Introdução",
         "pages": ["quickstart"]
     }
 ]
 ```
 
-```json Nested Navigation
+```json Navegação Aninhada
 "navigation": [
     {
-        "group": "Getting Started",
+        "group": "Introdução",
         "pages": [
             "quickstart",
             {
-                "group": "Nested Reference Pages",
-                "pages": ["nested-reference-page"]
+                "group": "Páginas de Referência Aninhadas",
+                "pages": ["pagina-referencia-aninhada"]
             }
         ]
     }
@@ -40,27 +40,27 @@ Our navigation syntax is recursive which means you can make nested navigation gr
 
 </CodeGroup>
 
-## Folders
+## Pastas
 
-Simply put your MDX files in folders and update the paths in `mint.json`.
+Basta colocar seus arquivos MDX em pastas e atualizar os caminhos no `mint.json`.
 
-For example, to have a page at `https://yoursite.com/your-folder/your-page` you would make a folder called `your-folder` containing an MDX file called `your-page.mdx`.
+Por exemplo, para ter uma página em `https://seusite.com/sua-pasta/sua-pagina`, você criaria uma pasta chamada `sua-pasta` contendo um arquivo MDX chamado `sua-pagina.mdx`.
 
 <Warning>
 
-You cannot use `api` for the name of a folder unless you nest it inside another folder. Mintlify uses Next.js which reserves the top-level `api` folder for internal server calls. A folder name such as `api-reference` would be accepted.
+Você não pode usar `api` para o nome de uma pasta, a menos que a aninhe dentro de outra pasta. O Mintlify usa o Next.js, que reserva a pasta `api` de nível superior para chamadas internas do servidor. Um nome de pasta como `api-reference` seria aceito.
 
 </Warning>
 
-```json Navigation With Folder
+```json Navegação Com Pasta
 "navigation": [
     {
-        "group": "Group Name",
-        "pages": ["your-folder/your-page"]
+        "group": "Nome do Grupo",
+        "pages": ["sua-pasta/sua-pagina"]
     }
 ]
 ```
 
-## Hidden Pages
+## Páginas Ocultas
 
-MDX files not included in `mint.json` will not show up in the sidebar but are accessible through the search bar and by linking directly to them.
+Arquivos MDX não incluídos no `mint.json` não aparecerão na barra lateral, mas são acessíveis através da barra de pesquisa e por link direto para eles.
