@@ -4,17 +4,33 @@
 
 O desenvolvimento de um contrato inteligente começa com a definição dos requisitos e a criação de um esboço do contrato. Nesta fase, os desenvolvedores escrevem o código do contrato utilizando uma linguagem de programação adequada, como Solidity para Ethereum. É crucial seguir as melhores práticas de codificação e considerar a segurança desde o início.
 
+- **Definição de Requisitos:** Identifique as funcionalidades e objetivos do contrato.
+- **Esboço do Contrato:** Crie um design inicial que aborde a lógica e a estrutura do contrato.
+- **Codificação Segura:** Implemente práticas de codificação seguras para evitar vulnerabilidades.
+
 ### Testes Unitários
 
 Após o desenvolvimento inicial, os testes unitários são realizados para garantir que cada parte do contrato funcione conforme esperado. Esses testes verificam a lógica do contrato em um ambiente controlado e ajudam a identificar e corrigir erros antes de prosseguir para a próxima fase.
+
+- **Cobertura de Testes:** Assegure-se de que todas as funções e casos de uso sejam testados.
+- **Automação de Testes:** Utilize frameworks de teste para automatizar a execução de testes unitários.
+- **Correção de Erros:** Identifique e corrija quaisquer falhas detectadas durante os testes.
 
 ### Testes de Integração
 
 Os testes de integração verificam a interação entre diferentes componentes do contrato e outros contratos ou sistemas externos. Esta fase é essencial para garantir que o contrato funcione corretamente em um ambiente realista e que todas as dependências sejam tratadas adequadamente.
 
+- **Interação entre Componentes:** Teste a comunicação e interação entre diferentes partes do contrato.
+- **Simulação de Ambiente Real:** Utilize ambientes de teste que simulem condições reais de operação.
+- **Validação de Dependências:** Verifique se todas as dependências externas estão funcionando conforme esperado.
+
 ### Auditorias de Segurança
 
 Antes do deployment, é fundamental realizar auditorias de segurança independentes. Especialistas em segurança revisam o código do contrato para identificar vulnerabilidades e recomendar melhorias. As auditorias ajudam a garantir que o contrato seja seguro e confiável.
+
+- **Revisão por Especialistas:** Contrate auditores de segurança experientes para revisar o código.
+- **Identificação de Vulnerabilidades:** Detecte e corrija vulnerabilidades antes do deployment.
+- **Recomendações de Melhoria:** Implemente melhorias sugeridas para aumentar a segurança do contrato.
 
 ## Deploy e Imutabilidade
 
@@ -22,17 +38,22 @@ Antes do deployment, é fundamental realizar auditorias de segurança independen
 
 A fase final do desenvolvimento é o deployment do contrato na blockchain. Durante esta fase, o contrato é enviado para a rede e se torna acessível a todos os participantes. É importante garantir que o contrato esteja completamente testado e auditado antes do deployment, pois qualquer erro ou vulnerabilidade não poderá ser corrigido posteriormente.
 
+- **Preparação para Deployment:** Assegure-se de que todos os testes e auditorias foram concluídos com sucesso.
+- **Execução do Deployment:** Utilize ferramentas adequadas para implantar o contrato na blockchain.
+- **Verificação Pós-Deployment:** Monitore o contrato após o deployment para garantir que ele funcione conforme esperado.
+
 ### Implicações da Imutabilidade
 
 Uma vez implantado, o contrato inteligente se torna imutável, o que significa que seu código não pode ser alterado. Esta característica garante a integridade e a confiança no contrato, mas também significa que qualquer erro ou vulnerabilidade permanecerá para sempre. Portanto, a imutabilidade destaca a importância de um desenvolvimento e testes rigorosos.
+
+- **Confiança e Segurança:** A imutabilidade aumenta a confiança dos usuários na integridade do contrato.
+- **Risco de Erros Permanentes:** Qualquer erro no código permanecerá indefinidamente, destacando a importância de auditorias rigorosas.
 
 ## Atualizações e Proxies
 
 ### Contratos Atualizáveis
 
 Embora os contratos inteligentes sejam imutáveis, é possível implementar contratos atualizáveis utilizando proxies. Um proxy é um contrato intermediário que encaminha chamadas para a lógica do contrato real. Isso permite que a lógica do contrato seja atualizada sem alterar o endereço do contrato na blockchain.
-
-### Melhores Práticas para Implementação de Proxies
 
 - **Separação de Lógica e Dados:** Mantenha a lógica do contrato e os dados armazenados em contratos separados. Isso facilita a atualização da lógica sem afetar os dados.
 - **Uso de Bibliotecas Confiáveis:** Utilize bibliotecas e padrões bem estabelecidos, como o padrão de proxy de armazenamento transparente, para garantir a segurança e a eficiência.
