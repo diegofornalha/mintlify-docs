@@ -1,0 +1,29 @@
+## Riscos em Aplicações Tradicionais
+
+### Vulnerabilidades Comuns
+
+- **SQL Injection:** Uma técnica de injeção de código que permite a um atacante interferir nas consultas que uma aplicação faz ao seu banco de dados. Isso pode resultar em acesso não autorizado a dados sensíveis, modificação ou exclusão de dados.
+- **Cross-Site Scripting (XSS):** Uma vulnerabilidade que permite a um atacante injetar scripts maliciosos em páginas web visualizadas por outros usuários. Isso pode levar ao roubo de cookies, credenciais de login e outros dados sensíveis.
+
+## Riscos Específicos de Contratos Inteligentes
+
+### Explorações Comuns
+
+- **Reentrância:** Uma vulnerabilidade onde um contrato é chamado recursivamente antes que a execução anterior seja concluída, permitindo que um atacante drene fundos do contrato.
+- **Underflow/Overflow:** Erros aritméticos que ocorrem quando uma operação resulta em um valor fora dos limites permitidos para um tipo de dado, potencialmente permitindo manipulação de valores e exploração de contratos.
+
+## Desafios de Segurança
+
+### Comparação de Métodos de Mitigação de Risco
+
+- **Aplicações Centralizadas:**
+
+  - **Firewalls e IDS/IPS:** Utilização de firewalls e sistemas de detecção/prevenção de intrusões para monitorar e proteger contra ataques.
+  - **Atualizações e Patches:** Implementação regular de atualizações de software e patches de segurança para corrigir vulnerabilidades conhecidas.
+  - **Auditorias de Segurança:** Revisões periódicas de segurança para identificar e mitigar riscos.
+
+- **Contratos Inteligentes:**
+  - **Auditorias de Código:** Revisões detalhadas do código por especialistas para identificar e corrigir vulnerabilidades antes do deployment.
+  - **Testes Rigorosos:** Implementação de testes unitários, de integração e de segurança para garantir que o contrato funcione conforme esperado e esteja livre de vulnerabilidades.
+  - **Uso de Bibliotecas Seguras:** Utilização de bibliotecas como SafeMath para prevenir erros de underflow/overflow e outras vulnerabilidades comuns.
+  - **Mecanismos de Segurança Adicionais:** Implementação de medidas como multi-assinaturas e limites de retirada para proteger os ativos em caso de comprometimento do contrato.
