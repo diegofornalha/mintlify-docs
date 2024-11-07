@@ -79,6 +79,111 @@
         "modulo_03/aula_09",
         "modulo_03/aula_10"
       ]
+    },
+    {
+      "group": "Módulo 04",
+      "pages": [
+        "modulo_04/aula_01",
+        "modulo_04/aula_02",
+        "modulo_04/aula_03",
+        "modulo_04/aula_04",
+        "modulo_04/aula_05",
+        "modulo_04/aula_06",
+        "modulo_04/aula_07",
+        "modulo_04/aula_08",
+        "modulo_04/aula_09",
+        "modulo_04/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 05",
+      "pages": [
+        "modulo_05/aula_01",
+        "modulo_05/aula_02",
+        "modulo_05/aula_03",
+        "modulo_05/aula_04",
+        "modulo_05/aula_05",
+        "modulo_05/aula_06",
+        "modulo_05/aula_07",
+        "modulo_05/aula_08",
+        "modulo_05/aula_09",
+        "modulo_05/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 06",
+      "pages": [
+        "modulo_06/aula_01",
+        "modulo_06/aula_02",
+        "modulo_06/aula_03",
+        "modulo_06/aula_04",
+        "modulo_06/aula_05",
+        "modulo_06/aula_06",
+        "modulo_06/aula_07",
+        "modulo_06/aula_08",
+        "modulo_06/aula_09",
+        "modulo_06/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 07",
+      "pages": [
+        "modulo_07/aula_01",
+        "modulo_07/aula_02",
+        "modulo_07/aula_03",
+        "modulo_07/aula_04",
+        "modulo_07/aula_05",
+        "modulo_07/aula_06",
+        "modulo_07/aula_07",
+        "modulo_07/aula_08",
+        "modulo_07/aula_09",
+        "modulo_07/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 08",
+      "pages": [
+        "modulo_08/aula_01",
+        "modulo_08/aula_02",
+        "modulo_08/aula_03",
+        "modulo_08/aula_04",
+        "modulo_08/aula_05",
+        "modulo_08/aula_06",
+        "modulo_08/aula_07",
+        "modulo_08/aula_08",
+        "modulo_08/aula_09",
+        "modulo_08/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 09",
+      "pages": [
+        "modulo_09/aula_01",
+        "modulo_09/aula_02",
+        "modulo_09/aula_03",
+        "modulo_09/aula_04",
+        "modulo_09/aula_05",
+        "modulo_09/aula_06",
+        "modulo_09/aula_07",
+        "modulo_09/aula_08",
+        "modulo_09/aula_09",
+        "modulo_09/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 10",
+      "pages": [
+        "modulo_10/aula_01",
+        "modulo_10/aula_02",
+        "modulo_10/aula_03",
+        "modulo_10/aula_04",
+        "modulo_10/aula_05",
+        "modulo_10/aula_06",
+        "modulo_10/aula_07",
+        "modulo_10/aula_08",
+        "modulo_10/aula_09",
+        "modulo_10/aula_10"
+      ]
     }
   ],
   "footerSocials": {
