@@ -34,6 +34,21 @@
     {
       "group": "Documentação da API",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Módulo 01",
+      "pages": [
+        "modulo_01/aula_01",
+        "modulo_01/aula_02",
+        "modulo_01/aula_03",
+        "modulo_01/aula_04",
+        "modulo_01/aula_05",
+        "modulo_01/aula_06",
+        "modulo_01/aula_07",
+        "modulo_01/aula_08",
+        "modulo_01/aula_09",
+        "modulo_01/aula_10"
+      ]
     }
   ],
   "footerSocials": {
