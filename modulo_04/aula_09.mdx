@@ -65,3 +65,85 @@ Após a implantação, é importante revisar o projeto e coletar feedback para m
 - **Revisão de Código:** Realize uma revisão final do código para garantir que ele esteja otimizado e seguro.
 - **Coleta de Feedback:** Obtenha feedback de usuários e desenvolvedores para identificar áreas de melhoria.
 - **Planejamento de Atualizações:** Planeje atualizações futuras com base no feedback recebido e nas mudanças no ambiente de blockchain.
+
+# Uso de Docker para Ferramentas de Segurança
+
+Nesta aula, vamos explorar como usar Docker para configurar e integrar ferramentas de auditoria de segurança para contratos inteligentes. Docker oferece um ambiente isolado e consistente, facilitando a execução de ferramentas de segurança sem conflitos de dependências.
+
+## O que é Docker?
+
+Docker é uma plataforma que permite criar, implantar e executar aplicações em contêineres. Os contêineres são leves e portáteis, garantindo que o software funcione da mesma forma em qualquer ambiente.
+
+### Benefícios do Uso de Docker
+
+- **Isolamento de Ambiente:** Cada contêiner é isolado, evitando conflitos de dependências entre diferentes ferramentas.
+- **Portabilidade:** Os contêineres podem ser executados em qualquer sistema que suporte Docker, garantindo consistência entre ambientes de desenvolvimento e produção.
+- **Facilidade de Configuração:** Docker simplifica a configuração de ambientes complexos, permitindo que as ferramentas sejam executadas com um único comando.
+
+## Configuração de Ferramentas de Segurança com Docker
+
+### Exemplo de Configuração com Slither
+
+1. **Criação do Dockerfile:** Crie um arquivo `Dockerfile` para definir o ambiente de execução do Slither.
+
+   ```dockerfile
+   FROM python:3.8-slim
+
+   RUN pip install slither-analyzer
+
+   WORKDIR /app
+
+   ENTRYPOINT ["slither"]
+   ```
+
+2. **Construção da Imagem Docker:** Use o comando abaixo para construir a imagem Docker.
+
+   ```bash
+   docker build -t slither .
+   ```
+
+3. **Execução do Slither em um Contêiner:** Execute o Slither em um contêiner Docker, montando o diretório do projeto.
+
+   ```bash
+   docker run --rm -v $(pwd):/app slither /app
+   ```
+
+### Exemplo de Configuração com Manticore
+
+1. **Criação do Dockerfile:** Crie um arquivo `Dockerfile` para definir o ambiente de execução do Manticore.
+
+   ```dockerfile
+   FROM python:3.8-slim
+
+   RUN pip install manticore
+
+   WORKDIR /app
+
+   ENTRYPOINT ["manticore"]
+   ```
+
+2. **Construção da Imagem Docker:** Use o comando abaixo para construir a imagem Docker.
+
+   ```bash
+   docker build -t manticore .
+   ```
+
+3. **Execução do Manticore em um Contêiner:** Execute o Manticore em um contêiner Docker, montando o diretório do projeto.
+
+   ```bash
+   docker run --rm -v $(pwd):/app manticore /app/<caminho_do_contrato>
+   ```
+
+## Integração de Ferramentas de Segurança com Docker
+
+Docker pode ser integrado em pipelines de CI/CD para automatizar a execução de ferramentas de segurança a cada alteração no código.
+
+### Benefícios da Integração
+
+- **Automação de Análises:** As ferramentas de segurança podem ser executadas automaticamente a cada commit, garantindo que o código esteja sempre seguro.
+- **Consistência de Ambiente:** Docker garante que as ferramentas sejam executadas no mesmo ambiente em todos os estágios do pipeline.
+- **Feedback Rápido:** Os desenvolvedores recebem feedback imediato sobre vulnerabilidades identificadas, permitindo correções rápidas.
+
+## Conclusão
+
+O uso de Docker para configurar e integrar ferramentas de segurança é uma prática essencial para garantir a segurança e a integridade dos contratos inteligentes. Ao isolar o ambiente de execução e automatizar a análise de segurança, Docker facilita a detecção e correção de vulnerabilidades, aumentando a confiança na qualidade do contrato. A implementação de contêineres Docker e a integração em pipelines de desenvolvimento são passos importantes para garantir a segurança contínua dos contratos inteligentes.
