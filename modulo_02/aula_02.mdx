@@ -71,3 +71,51 @@ Para garantir que o contrato seja seguro, eficiente e fácil de manter, siga est
 - **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso e evitar duplicação de código.
 - **Emissão de Eventos:** Emita eventos para registrar ações importantes e facilitar a auditoria do contrato.
 - **Validação de Entradas:** Valide todas as entradas de usuário para evitar erros e vulnerabilidades.
+
+# Testes de Cobertura e Funcionalidade
+
+Nesta aula, vamos explorar a importância dos testes de cobertura e funcionalidade em contratos inteligentes, destacando como eles garantem que o código seja completamente testado e funcione conforme o esperado.
+
+## Importância da Cobertura de Código
+
+A cobertura de código é uma métrica que indica a porcentagem de código que é executada durante os testes. Garantir uma alta cobertura de código é essencial para identificar áreas do contrato que não foram testadas e que podem conter erros ou vulnerabilidades.
+
+### Benefícios da Cobertura de Código
+
+- **Identificação de Lacunas:** A cobertura de código ajuda a identificar partes do contrato que não foram testadas, permitindo que os desenvolvedores adicionem testes adicionais para cobrir essas áreas.
+- **Redução de Riscos:** Testar todas as partes do código reduz o risco de erros e vulnerabilidades passarem despercebidos.
+- **Confiança na Qualidade do Código:** Uma alta cobertura de código aumenta a confiança de que o contrato funcionará conforme o esperado em diferentes cenários.
+
+### Ferramentas para Medir Cobertura
+
+Existem várias ferramentas que podem ser usadas para medir a cobertura de código em contratos inteligentes:
+
+- **Solidity Coverage:** Uma ferramenta que gera relatórios de cobertura de código para contratos Solidity, destacando as linhas de código que foram executadas durante os testes.
+- **Hardhat Coverage:** Um plugin para Hardhat que fornece relatórios detalhados de cobertura de código, integrando-se facilmente em fluxos de trabalho de desenvolvimento existentes.
+
+## Testes de Funcionalidade
+
+Os testes de funcionalidade verificam se o contrato funciona conforme o esperado em diferentes cenários de uso. Eles garantem que todas as funcionalidades do contrato sejam testadas e que o contrato atenda aos requisitos especificados.
+
+### Tipos de Testes de Funcionalidade
+
+- **Testes Unitários:** Verificam a funcionalidade de partes individuais do contrato, como funções e módulos. São rápidos e fáceis de executar.
+
+  - **Exemplo:** Testar uma função de transferência para garantir que ela atualize corretamente os saldos.
+
+- **Testes de Integração:** Avaliam a interação entre diferentes partes do contrato e com outros contratos ou sistemas externos.
+
+  - **Exemplo:** Testar a interação entre um contrato de token e um contrato de troca.
+
+- **Testes de Aceitação:** Verificam se o contrato atende aos requisitos especificados e funciona conforme o esperado em um ambiente realista.
+  - **Exemplo:** Simular um fluxo de trabalho completo para garantir que todas as funcionalidades do contrato sejam testadas.
+
+### Boas Práticas de Testes de Funcionalidade
+
+- **Cobertura Abrangente:** Assegure-se de que todos os casos de uso e caminhos de execução sejam cobertos pelos testes.
+- **Automação de Testes:** Utilize frameworks de teste para automatizar a execução de testes e garantir consistência.
+- **Documentação de Resultados:** Documente todos os resultados dos testes e as correções realizadas para referência futura.
+
+## Conclusão
+
+Garantir a cobertura de código e realizar testes de funcionalidade são passos essenciais para o desenvolvimento de contratos inteligentes seguros e confiáveis. Ao testar todas as partes do código e verificar se o contrato funciona conforme o esperado, os desenvolvedores podem identificar e corrigir erros antes do deployment, reduzindo o risco de vulnerabilidades e aumentando a confiança na qualidade do contrato.

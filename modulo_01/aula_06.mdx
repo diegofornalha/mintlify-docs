@@ -1,53 +1,120 @@
-## Componentes Principais de Contratos Inteligentes
+# Como um Contrato Inteligente é Estruturado
 
-### Estrutura Básica de Contratos
+Nesta aula, vamos explorar a estrutura básica de um contrato inteligente em Solidity, destacando o papel das variáveis, funções e regras aplicadas para garantir a segurança e eficiência do contrato.
 
-Os contratos inteligentes são compostos por três componentes principais: variáveis, funções e modificadores. Cada um desses componentes desempenha um papel crucial na definição do comportamento e da lógica do contrato.
+## Estrutura Básica de Contratos
 
-- **Variáveis:** Armazenam dados que podem ser usados e modificados pelas funções do contrato.
-- **Funções:** Executam ações específicas e podem modificar o estado do contrato.
-- **Modificadores:** Alteram o comportamento de funções, adicionando condições ou restrições.
+Os contratos inteligentes em Solidity são compostos por três componentes principais: variáveis, funções e modificadores. Cada um desses componentes desempenha um papel crucial na definição do comportamento e da lógica do contrato.
 
-### Variáveis e Escopo
+### Variáveis
 
-#### Variáveis de Estado vs. Variáveis Locais
+As variáveis são usadas para armazenar dados que podem ser usados e modificados pelas funções do contrato. Elas são classificadas em variáveis de estado e variáveis locais.
 
-- **Variáveis de Estado:** São armazenadas permanentemente na blockchain e mantêm seu valor entre as chamadas de função. Exemplos incluem saldos de contas e dados de configuração.
+- **Variáveis de Estado:** Armazenadas permanentemente na blockchain, mantêm seu valor entre as chamadas de função. Exemplos incluem saldos de contas e dados de configuração.
 
   - **Persistência:** Os dados são persistentes e acessíveis por todas as funções do contrato.
   - **Custo de Gas:** Alterar variáveis de estado consome gas, pois envolve escrita na blockchain.
 
-- **Variáveis Locais:** São temporárias e existem apenas durante a execução de uma função. Elas são usadas para cálculos intermediários e não afetam o estado global do contrato.
+- **Variáveis Locais:** Temporárias e existem apenas durante a execução de uma função. Usadas para cálculos intermediários e não afetam o estado global do contrato.
   - **Eficiência:** Não consomem gas para armazenamento, pois não são persistentes.
   - **Escopo Limitado:** Só podem ser acessadas dentro da função onde são declaradas.
 
-#### Tipos de Dados
+### Tipos de Dados
+
+Solidity oferece uma variedade de tipos de dados que permitem a manipulação de informações de forma eficiente.
 
 - **Tipos Inteiros:** `uint`, `int` - usados para representar números inteiros.
 - **Tipos de Endereço:** `address` - usado para armazenar endereços de contas.
 - **Tipos de Dados Booleanos:** `bool` - usado para representar valores verdadeiros ou falsos.
 - **Tipos de Dados de Bytes:** `bytes`, `string` - usados para armazenar dados binários e texto.
 
-#### Impacto na Segurança
+### Funções
 
-- **Visibilidade:** Variáveis de estado devem ser cuidadosamente gerenciadas para evitar acessos não autorizados. O uso de modificadores de visibilidade (`public`, `private`, `internal`, `external`) é essencial para proteger dados sensíveis.
-- **Inicialização:** Variáveis não inicializadas podem levar a comportamentos inesperados. Sempre inicialize variáveis de estado para valores seguros.
-- **Overflow e Underflow:** Erros aritméticos podem ocorrer se os valores excederem os limites permitidos. Utilize bibliotecas como SafeMath para prevenir esses problemas.
-
-### Funções e Modificadores
-
-#### Estruturação de Funções
+As funções são blocos de código que executam ações específicas e podem modificar o estado do contrato. Elas são a principal forma de interação com o contrato.
 
 - **Funções Públicas:** Podem ser chamadas por qualquer pessoa. Devem ser usadas com cautela para evitar acessos indesejados.
 - **Funções Privadas:** Só podem ser chamadas de dentro do contrato. São úteis para lógica interna que não deve ser exposta.
-- **Funções Restritas:** Utilizam modificadores para limitar quem pode chamá-las. Por exemplo, apenas o proprietário do contrato pode executar certas funções.
+- **Funções de Visualização (View):** Não alteram o estado do contrato e podem ser chamadas sem custo de gas.
+- **Funções Puras (Pure):** Não acessam nem modificam o estado do contrato.
 
-#### Uso de `require` e `assert`
+### Modificadores
 
-- **`require`:** Verifica condições e reverte a transação se a condição não for atendida. É usado para validar entradas e garantir que as pré-condições sejam satisfeitas.
-- **`assert`:** Verifica condições internas e reverte a transação se a condição não for atendida. É usado para verificar invariantes e garantir que o contrato esteja em um estado consistente.
+Modificadores são usados para alterar o comportamento de funções, adicionando condições ou restrições.
+
+- **Modificadores de Acesso:** Restringem quem pode chamar uma função.
+
+  - **Exemplo:**
+
+    ```solidity
+    modifier somenteProprietario() {
+        require(msg.sender == proprietario, "Acesso negado");
+        _;
+    }
+
+    function retirar(uint256 valor) public somenteProprietario {
+        saldo -= valor;
+    }
+    ```
+
+- **Modificadores de Validação:** Verificam condições antes de executar a função.
+
+  - **Exemplo:**
+
+    ```solidity
+    modifier validarValor(uint256 valor) {
+        require(valor > 0, "Valor deve ser maior que zero");
+        _;
+    }
+
+    function depositar(uint256 valor) public validarValor(valor) {
+        saldo += valor;
+    }
+    ```
+
+### Regras Aplicadas em Solidity
+
+Para garantir que o contrato seja seguro e eficiente, Solidity aplica várias regras e práticas recomendadas.
+
+- **Validação de Entradas:** Sempre valide as entradas do usuário para evitar erros e vulnerabilidades.
+- **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso e evitar duplicação de código.
+- **Documentação de Funções:** Documente todas as funções e modificadores para facilitar a manutenção e auditoria do contrato.
+- **Reutilização de Código:** Utilize funções e modificadores para evitar duplicação de lógica e melhorar a legibilidade do código.
 
 ### Exemplos Práticos
 
 - **Contrato de Token:** Um exemplo de contrato que utiliza variáveis de estado para armazenar saldos de contas e funções para transferir tokens entre endereços.
+
+  ```solidity
+  contract Token {
+      mapping(address => uint256) public saldos;
+      event Transferencia(address indexed de, address indexed para, uint256 valor);
+
+      function transferir(address para, uint256 valor) public {
+          require(saldos[msg.sender] >= valor, "Saldo insuficiente");
+          saldos[msg.sender] -= valor;
+          saldos[para] += valor;
+          emit Transferencia(msg.sender, para, valor);
+      }
+  }
+  ```
+
 - **Contrato de Votação:** Um exemplo de contrato que utiliza funções restritas para permitir que apenas usuários autorizados votem em propostas.
+
+  ```solidity
+  contract Votacao {
+      struct Proposta {
+          string descricao;
+          uint256 votos;
+      }
+
+      Proposta[] public propostas;
+
+      function criarProposta(string memory descricao) public {
+          propostas.push(Proposta(descricao, 0));
+      }
+
+      function votar(uint256 indiceProposta) public {
+          propostas[indiceProposta].votos += 1;
+      }
+  }
+  ```

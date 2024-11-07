@@ -1,41 +1,48 @@
-## Riscos em Aplicações Tradicionais
+# Smart Contracts vs. Aplicações Tradicionais
 
-### Vulnerabilidades Comuns
+Nesta aula, vamos explorar as diferenças entre smart contracts e aplicações tradicionais, com foco na comparação dos riscos e desafios de segurança associados a cada modelo.
 
-- **SQL Injection:** Uma técnica de injeção de código que permite a um atacante interferir nas consultas que uma aplicação faz ao seu banco de dados. Isso pode resultar em acesso não autorizado a dados sensíveis, modificação ou exclusão de dados.
+## Smart Contracts
 
-  - **Prevenção:** Utilize consultas parametrizadas e ORM (Object-Relational Mapping) para evitar a injeção de SQL.
-  - **Impacto:** Pode levar à exposição de dados confidenciais e comprometer a integridade do banco de dados.
+### Características
 
-- **Cross-Site Scripting (XSS):** Uma vulnerabilidade que permite a um atacante injetar scripts maliciosos em páginas web visualizadas por outros usuários. Isso pode levar ao roubo de cookies, credenciais de login e outros dados sensíveis.
-  - **Prevenção:** Sanitize e escape todas as entradas de usuário antes de exibi-las em páginas web.
-  - **Impacto:** Pode comprometer a segurança de contas de usuário e expor dados sensíveis.
+- **Execução Descentralizada:** Smart contracts são executados em uma rede blockchain, eliminando a necessidade de um servidor centralizado. Isso aumenta a resistência a censura e manipulação de dados.
+- **Imutabilidade:** Uma vez implantado, o código de um smart contract não pode ser alterado, garantindo que ele funcione conforme o esperado, mas também significando que qualquer erro ou vulnerabilidade não pode ser corrigido após a implantação.
+- **Transparência:** Todas as transações e operações são registradas na blockchain, tornando-as visíveis e auditáveis por qualquer pessoa.
 
-## Riscos Específicos de Contratos Inteligentes
+### Riscos de Segurança
 
-### Explorações Comuns
+- **Vulnerabilidades de Código:** Erros no código podem ser explorados por atacantes, resultando em perda de fundos ou manipulação de dados. Exemplos incluem reentrância e overflow/underflow.
+- **Imutabilidade do Código:** A impossibilidade de corrigir erros após a implantação significa que qualquer vulnerabilidade presente no código permanecerá indefinidamente.
+- **Exposição ao Público:** Qualquer pessoa pode interagir com o contrato, aumentando o risco de ataques maliciosos.
 
-- **Reentrância:** Uma vulnerabilidade onde um contrato é chamado recursivamente antes que a execução anterior seja concluída, permitindo que um atacante drene fundos do contrato.
+## Aplicações Tradicionais
 
-  - **Prevenção:** Utilize padrões de segurança como o "check-effects-interactions" e mutexes para prevenir reentrância.
-  - **Impacto:** Pode resultar na perda de todos os fundos do contrato.
+### Características
 
-- **Underflow/Overflow:** Erros aritméticos que ocorrem quando uma operação resulta em um valor fora dos limites permitidos para um tipo de dado, potencialmente permitindo manipulação de valores e exploração de contratos.
-  - **Prevenção:** Utilize bibliotecas como SafeMath para realizar operações aritméticas seguras.
-  - **Impacto:** Pode permitir que atacantes manipulem saldos e outras variáveis críticas.
+- **Execução Centralizada:** Aplicações tradicionais são executadas em servidores centralizados, permitindo maior controle sobre o ambiente de execução e a capacidade de aplicar atualizações e patches de segurança.
+- **Flexibilidade de Atualização:** O código pode ser alterado e atualizado conforme necessário, permitindo a correção de erros e a implementação de novas funcionalidades.
+- **Controle de Acesso:** O acesso ao sistema pode ser restrito e controlado, reduzindo o risco de acesso não autorizado.
 
-## Desafios de Segurança
+### Riscos de Segurança
 
-### Comparação de Métodos de Mitigação de Risco
+- **Vulnerabilidades Internas:** Acesso privilegiado pode ser explorado por insiders mal-intencionados, resultando em roubo de dados ou manipulação de informações.
+- **Dependência de Provedores de Segurança:** Aplicações tradicionais frequentemente dependem de provedores de segurança externos para proteger seus dados e sistemas.
+- **Ponto Único de Falha:** A centralização do controle resulta em um único ponto de falha, tornando o sistema vulnerável a ataques direcionados e falhas de sistema.
 
-- **Aplicações Centralizadas:**
+## Comparação de Riscos e Desafios de Segurança
 
-  - **Firewalls e IDS/IPS:** Utilização de firewalls e sistemas de detecção/prevenção de intrusões para monitorar e proteger contra ataques.
-  - **Atualizações e Patches:** Implementação regular de atualizações de software e patches de segurança para corrigir vulnerabilidades conhecidas.
-  - **Auditorias de Segurança:** Revisões periódicas de segurança para identificar e mitigar riscos.
+### Vantagens e Desvantagens
 
-- **Contratos Inteligentes:**
-  - **Auditorias de Código:** Revisões detalhadas do código por especialistas para identificar e corrigir vulnerabilidades antes do deployment.
-  - **Testes Rigorosos:** Implementação de testes unitários, de integração e de segurança para garantir que o contrato funcione conforme esperado e esteja livre de vulnerabilidades.
-  - **Uso de Bibliotecas Seguras:** Utilização de bibliotecas como SafeMath para prevenir erros de underflow/overflow e outras vulnerabilidades comuns.
-  - **Mecanismos de Segurança Adicionais:** Implementação de medidas como multi-assinaturas e limites de retirada para proteger os ativos em caso de comprometimento do contrato.
+- **Smart Contracts:**
+
+  - **Vantagens:** Transparência e imutabilidade aumentam a confiança na integridade do sistema. A descentralização reduz o risco de um único ponto de falha.
+  - **Desvantagens:** Maior exposição ao público e impossibilidade de corrigir vulnerabilidades após a implantação do código.
+
+- **Aplicações Tradicionais:**
+  - **Vantagens:** Controle centralizado permite respostas rápidas a incidentes de segurança e a implementação de atualizações e patches.
+  - **Desvantagens:** Maior risco de falhas administrativas e dependência de provedores de segurança externos.
+
+## Considerações Finais
+
+A escolha entre smart contracts e aplicações tradicionais depende das necessidades específicas do projeto, incluindo requisitos de segurança, controle e transparência. Smart contracts oferecem maior resistência a censura e manipulação de dados, enquanto aplicações tradicionais oferecem maior controle e facilidade de gerenciamento. A avaliação cuidadosa dos riscos e benefícios de cada modelo é essencial para determinar a abordagem mais adequada para cada projeto específico.
