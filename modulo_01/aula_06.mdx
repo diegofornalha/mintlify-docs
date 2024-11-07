@@ -4,18 +4,28 @@
 
 Os contratos inteligentes são compostos por três componentes principais: variáveis, funções e modificadores. Cada um desses componentes desempenha um papel crucial na definição do comportamento e da lógica do contrato.
 
+- **Variáveis:** Armazenam dados que podem ser usados e modificados pelas funções do contrato.
+- **Funções:** Executam ações específicas e podem modificar o estado do contrato.
+- **Modificadores:** Alteram o comportamento de funções, adicionando condições ou restrições.
+
 ### Variáveis e Escopo
 
 #### Variáveis de Estado vs. Variáveis Locais
 
 - **Variáveis de Estado:** São armazenadas permanentemente na blockchain e mantêm seu valor entre as chamadas de função. Exemplos incluem saldos de contas e dados de configuração.
+
+  - **Persistência:** Os dados são persistentes e acessíveis por todas as funções do contrato.
+  - **Custo de Gas:** Alterar variáveis de estado consome gas, pois envolve escrita na blockchain.
+
 - **Variáveis Locais:** São temporárias e existem apenas durante a execução de uma função. Elas são usadas para cálculos intermediários e não afetam o estado global do contrato.
+  - **Eficiência:** Não consomem gas para armazenamento, pois não são persistentes.
+  - **Escopo Limitado:** Só podem ser acessadas dentro da função onde são declaradas.
 
 #### Tipos de Dados
 
 - **Tipos Inteiros:** `uint`, `int` - usados para representar números inteiros.
 - **Tipos de Endereço:** `address` - usado para armazenar endereços de contas.
-- **Tipos de Dados Booleans:** `bool` - usado para representar valores verdadeiros ou falsos.
+- **Tipos de Dados Booleanos:** `bool` - usado para representar valores verdadeiros ou falsos.
 - **Tipos de Dados de Bytes:** `bytes`, `string` - usados para armazenar dados binários e texto.
 
 #### Impacto na Segurança
@@ -38,3 +48,6 @@ Os contratos inteligentes são compostos por três componentes principais: vari�
 - **`assert`:** Verifica condições internas e reverte a transação se a condição não for atendida. É usado para verificar invariantes e garantir que o contrato esteja em um estado consistente.
 
 ### Exemplos Práticos
+
+- **Contrato de Token:** Um exemplo de contrato que utiliza variáveis de estado para armazenar saldos de contas e funções para transferir tokens entre endereços.
+- **Contrato de Votação:** Um exemplo de contrato que utiliza funções restritas para permitir que apenas usuários autorizados votem em propostas.
