@@ -1,9 +1,58 @@
 # Comparação de Contratos Seguros vs. Explorados
 
-Estudo comparativo entre contratos seguros e vulneráveis para garantir a segurança e eficácia.
+Nesta aula, vamos realizar um estudo comparativo entre contratos inteligentes seguros e vulneráveis, analisando as diferenças em suas implementações e práticas de segurança. Este estudo ajudará a identificar padrões de vulnerabilidades e a implementar melhores práticas de segurança.
 
-## Tópicos abordados:
+## Importância da Comparação de Contratos
 
-- Análise de contratos seguros
-- Análise de contratos explorados
-- Exemplos de comparação
+Comparar contratos seguros e explorados é essencial para entender como as vulnerabilidades são introduzidas e como podem ser evitadas. Isso ajuda a:
+
+- **Identificar Padrões de Vulnerabilidades:** Compreender como as vulnerabilidades são exploradas e quais são as mais comuns.
+- **Implementar Melhores Práticas:** Adotar práticas de segurança que poderiam ter evitado as explorações.
+- **Aumentar a Conscientização:** Sensibilizar desenvolvedores e auditores sobre os riscos e a importância da segurança.
+
+## Estudo Comparativo
+
+### Contratos Seguros
+
+- **Uso de Padrões de Segurança:** Implementam padrões de segurança reconhecidos, como o uso de mutexes para evitar reentrância.
+- **Validação de Entradas:** Realizam validações rigorosas de entradas para evitar ataques de injeção e manipulação de dados.
+- **Gerenciamento de Permissões:** Garantem que apenas usuários autorizados possam executar funções críticas no contrato.
+
+  ```solidity
+  modifier apenasDono() {
+      require(msg.sender == dono, "Acesso negado");
+      _;
+  }
+  ```
+
+### Contratos Vulneráveis
+
+- **Falta de Validação de Entradas:** Não realizam validações adequadas de entradas, permitindo que dados maliciosos sejam processados.
+- **Reentrância:** Permitem reentrância devido à falta de padrões de segurança adequados.
+- **Manipulação de Oráculos:** São suscetíveis a manipulação de preços de oráculos devido à falta de verificações de integridade.
+
+  ```solidity
+  function retirar(uint256 valor) public {
+      require(saldo[msg.sender] >= valor, "Saldo insuficiente");
+      (bool sucesso, ) = msg.sender.call{value: valor}("");
+      require(sucesso, "Falha na transferência");
+  }
+  ```
+
+## Lições Aprendidas
+
+### Identificação de Vulnerabilidades Comuns
+
+- **Reentrância:** Uma das vulnerabilidades mais exploradas, que pode ser evitada com práticas de codificação seguras.
+- **Manipulação de Oráculos:** A manipulação de preços de oráculos pode ser mitigada com o uso de oráculos descentralizados e médias ponderadas de preços.
+- **Erros de Implementação:** Revisões rigorosas e testes abrangentes são essenciais para identificar e corrigir erros de implementação.
+
+### Melhores Práticas de Segurança
+
+- **Revisão de Código:** Realize revisões de código regulares para identificar e corrigir vulnerabilidades.
+- **Testes de Segurança:** Utilize ferramentas de teste automatizado para verificar a segurança do contrato.
+- **Auditorias Externas:** Considere contratar auditores de segurança externos para realizar uma revisão independente do contrato.
+
+## Conclusão
+
+A comparação de contratos seguros e explorados é uma prática essencial para garantir a segurança e a integridade dos contratos inteligentes. Ao aprender com os erros do passado e implementar melhores práticas de segurança, os desenvolvedores podem reduzir o risco de explorações e aumentar a confiança na qualidade do contrato. A implementação de práticas de segurança eficazes e a integração de ferramentas de análise em pipelines de desenvolvimento são passos importantes para garantir a segurança contínua dos contratos inteligentes.
