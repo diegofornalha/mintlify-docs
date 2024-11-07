@@ -1,3 +1,92 @@
 # Manticore e Simulações de Ataque
 
 O Manticore é uma ferramenta de execução simbólica que permite simular ataques em smart contracts. Nesta aula, vamos configurar o Manticore e usá-lo para explorar contratos em busca de vulnerabilidades exploráveis. Vamos discutir como o Manticore pode ser usado para simular diferentes cenários de ataque, como manipulação de variáveis e exploração de falhas de lógica. Além disso, veremos como os resultados do Manticore podem ser usados para reforçar a segurança dos contratos.
+
+# Segurança em dApps
+
+Nesta aula, vamos explorar as melhores práticas e técnicas para garantir a segurança de aplicações descentralizadas (dApps), abordando desde a prevenção de vulnerabilidades até a implementação de medidas de proteção.
+
+## Prevenção de Vulnerabilidades Comuns
+
+dApps estão sujeitos a várias vulnerabilidades que podem ser exploradas por atacantes. Prevenir essas vulnerabilidades é crucial para garantir a segurança do dApp.
+
+- **Injeção de Código:** Uma técnica onde um atacante insere código malicioso em uma aplicação. Isso pode resultar em acesso não autorizado a dados sensíveis ou execução de ações indesejadas.
+
+  - **Prevenção:** Sanitize e escape todas as entradas de usuário antes de processá-las.
+
+- **Cross-Site Scripting (XSS):** Uma vulnerabilidade que permite a um atacante injetar scripts maliciosos em páginas web visualizadas por outros usuários.
+
+  - **Prevenção:** Utilize Content Security Policy (CSP) e sanitize todas as entradas de usuário.
+
+- **Reentrância em Contratos Inteligentes:** Uma vulnerabilidade onde um contrato é chamado recursivamente antes que a execução anterior seja concluída.
+  - **Prevenção:** Utilize padrões de segurança como o "check-effects-interactions" e mutexes para prevenir reentrância.
+
+## Medidas de Proteção
+
+Implementar medidas de proteção adicionais pode ajudar a mitigar riscos e aumentar a segurança do dApp.
+
+- **Controle de Acesso:** Utilize autenticação e autorização para garantir que apenas usuários autorizados possam acessar funcionalidades críticas.
+
+  - **Exemplo:** Implementar autenticação de dois fatores (2FA) para aumentar a segurança.
+
+- **Criptografia de Dados:** Proteja dados sensíveis usando criptografia para garantir que mesmo que sejam interceptados, não possam ser lidos.
+
+  - **Exemplo:** Utilize HTTPS para proteger dados em trânsito e criptografia AES para dados em repouso.
+
+- **Monitoramento Contínuo:** Implemente soluções de monitoramento para detectar e responder rapidamente a atividades suspeitas.
+  - **Exemplo:** Utilize ferramentas de monitoramento de segurança para alertar sobre tentativas de acesso não autorizado.
+
+## Auditorias de Segurança
+
+Realizar auditorias de segurança é uma prática essencial para identificar e corrigir vulnerabilidades antes do deployment.
+
+- **Revisão de Código:** Contrate auditores de segurança experientes para revisar o código do dApp.
+
+  - **Objetivo:** Identificar vulnerabilidades e recomendar melhorias.
+
+- **Testes de Penetração:** Simule ataques reais para testar a resiliência do dApp.
+
+  - **Objetivo:** Avaliar como o dApp responde a tentativas de exploração.
+
+- **Relatórios de Auditoria:** Documente todos os achados e as correções realizadas.
+  - **Objetivo:** Fornecer transparência e aumentar a confiança dos usuários.
+
+## Boas Práticas de Desenvolvimento Seguro
+
+Para garantir que o dApp seja seguro e eficiente, siga estas boas práticas de desenvolvimento:
+
+- **Validação de Entradas:** Sempre valide as entradas do usuário para evitar erros e vulnerabilidades.
+- **Uso de Bibliotecas Seguras:** Utilize bibliotecas bem estabelecidas para realizar operações críticas.
+- **Documentação de Código:** Mantenha o código bem documentado para facilitar a revisão e a manutenção.
+- **Atualizações Regulares:** Realize atualizações regulares para corrigir vulnerabilidades e melhorar a segurança.
+
+## Exemplos Práticos
+
+- **Implementação de Autenticação Segura:**
+
+  ```javascript
+  const express = require("express");
+  const app = express();
+  const session = require("express-session");
+  const bcrypt = require("bcrypt");
+
+  app.use(
+    session({
+      secret: "segredo",
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: true },
+    })
+  );
+
+  app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+    const user = await getUserByUsername(username);
+    if (user && (await bcrypt.compare(password, user.password))) {
+      req.session.userId = user.id;
+      res.send("Login bem-sucedido");
+    } else {
+      res.status(401).send("Credenciais inválidas");
+    }
+  });
+  ```

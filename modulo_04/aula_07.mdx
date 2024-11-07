@@ -15,3 +15,57 @@ Ao longo desta aula, exploraremos casos práticos de otimização, demonstrando 
 Também abordaremos a importância de testar o consumo de gas em diferentes redes (mainnet, testnets, redes privadas), já que o comportamento e os custos podem variar significativamente. O Hardhat e o Truffle oferecem configurações flexíveis para simular diferentes ambientes de rede, permitindo uma avaliação abrangente do desempenho do contrato em várias condições.
 
 Por fim, discutiremos estratégias avançadas de otimização, como o uso de assembly inline para operações críticas, técnicas de batching para reduzir o número de transações necessárias, e padrões de upgrade que permitem melhorar a eficiência do contrato ao longo do tempo sem comprometer a segurança ou a funcionalidade.
+
+# Atualização e Manutenção de dApps
+
+Nesta aula, vamos explorar as práticas e estratégias para a atualização e manutenção de aplicações descentralizadas (dApps), garantindo que elas permaneçam seguras e funcionais ao longo do tempo.
+
+## Desafios da Atualização de dApps
+
+A atualização de dApps apresenta desafios únicos devido à natureza imutável dos contratos inteligentes. Uma vez implantado, o código de um contrato não pode ser alterado, o que requer estratégias específicas para implementar atualizações.
+
+- **Imutabilidade dos Contratos:** A imutabilidade garante a integridade do contrato, mas impede alterações diretas no código.
+- **Compatibilidade:** Garantir que novas versões do dApp sejam compatíveis com versões anteriores para evitar interrupções.
+- **Segurança:** Manter a segurança durante o processo de atualização para evitar introduzir novas vulnerabilidades.
+
+## Estratégias de Atualização
+
+Existem várias estratégias para atualizar dApps sem comprometer sua integridade:
+
+- **Contratos Proxies:** Utilize contratos proxies para encaminhar chamadas para a lógica do contrato real, permitindo atualizações sem alterar o endereço do contrato.
+
+  - **Vantagens:** Permite atualizações de lógica sem mudar o endereço do contrato.
+  - **Desvantagens:** Introduz complexidade adicional e requer auditorias rigorosas.
+
+- **Módulos de Atualização:** Divida a lógica do contrato em módulos que podem ser atualizados individualmente.
+
+  - **Vantagens:** Flexibilidade para atualizar partes específicas do contrato.
+  - **Desvantagens:** Pode aumentar a complexidade do contrato.
+
+- **Contratos de Governança:** Implemente contratos de governança que permitam que a comunidade vote em atualizações.
+  - **Vantagens:** Envolve a comunidade no processo de atualização.
+  - **Desvantagens:** Pode ser lento e sujeito a manipulação.
+
+## Manutenção Contínua
+
+A manutenção contínua é essencial para garantir que os dApps permaneçam seguros e funcionais:
+
+- **Monitoramento de Segurança:** Implemente soluções de monitoramento para detectar e responder rapidamente a vulnerabilidades e ataques.
+
+  - **Exemplo:** Utilizar ferramentas de monitoramento para alertar sobre atividades suspeitas.
+
+- **Auditorias Regulares:** Realize auditorias de segurança regulares para identificar e corrigir novas vulnerabilidades.
+
+  - **Exemplo:** Contratar auditores externos para revisar o código periodicamente.
+
+- **Atualizações de Dependências:** Mantenha as bibliotecas e dependências do dApp atualizadas para garantir que estejam livres de vulnerabilidades conhecidas.
+  - **Exemplo:** Verificar regularmente por atualizações de bibliotecas como OpenZeppelin.
+
+## Boas Práticas de Atualização e Manutenção
+
+Para garantir que o dApp permaneça seguro e eficiente, siga estas boas práticas:
+
+- **Planejamento de Atualizações:** Planeje atualizações com antecedência e comunique-se com a comunidade sobre mudanças planejadas.
+- **Testes Rigorosos:** Realize testes rigorosos em ambientes de teste antes de implementar atualizações na rede principal.
+- **Documentação Detalhada:** Mantenha documentação detalhada de todas as atualizações e mudanças para referência futura.
+- **Engajamento da Comunidade:** Envolva a comunidade no processo de atualização para aumentar a transparência e a confiança.

@@ -17,3 +17,106 @@ A plataforma mantém uma base de conhecimento constantemente atualizada de vulne
 Para maximizar a eficácia do MythX, é crucial compreender como configurar adequadamente as análises e interpretar seus resultados. A plataforma permite a personalização de vários parâmetros de análise, permitindo que as equipes ajustem o processo de verificação de acordo com suas necessidades específicas. Isso inclui a capacidade de focar em tipos específicos de vulnerabilidades, definir limites de tempo para análises e configurar regras personalizadas de verificação.
 
 A natureza baseada em nuvem do MythX oferece vantagens significativas em termos de escalabilidade e poder computacional. A plataforma pode realizar análises complexas que seriam impraticáveis em máquinas locais, permitindo uma investigação mais profunda e abrangente da segurança do contrato. Além disso, a infraestrutura em nuvem garante que as análises possam ser executadas paralelamente, otimizando o tempo total necessário para verificar múltiplos contratos ou versões.
+
+# Desenvolvimento de Frontend para dApps
+
+Nesta aula, vamos explorar o desenvolvimento de interfaces de usuário para aplicações descentralizadas (dApps), abordando as tecnologias e práticas recomendadas para criar experiências de usuário intuitivas e eficientes.
+
+## Tecnologias para Desenvolvimento de Frontend
+
+O desenvolvimento de frontend para dApps utiliza tecnologias web modernas para criar interfaces dinâmicas e responsivas. As principais tecnologias incluem:
+
+- **HTML e CSS:** As bases para a estrutura e o estilo das páginas web.
+
+  - **HTML:** Define a estrutura do conteúdo da página.
+  - **CSS:** Controla a aparência visual, incluindo layout, cores e fontes.
+
+- **JavaScript:** A linguagem de programação que adiciona interatividade e lógica ao frontend.
+
+  - **Frameworks Populares:** React, Angular e Vue.js são amplamente utilizados para criar interfaces de usuário dinâmicas.
+
+- **Bibliotecas de Integração com Blockchain:**
+  - **Web3.js:** Permite a interação com a blockchain Ethereum a partir do frontend.
+  - **Ethers.js:** Uma alternativa a Web3.js, conhecida por sua simplicidade e modularidade.
+
+## Integração com Contratos Inteligentes
+
+A integração do frontend com contratos inteligentes é essencial para o funcionamento de um dApp. Isso envolve:
+
+- **Conexão com a Blockchain:** Utilizar bibliotecas como Web3.js ou Ethers.js para conectar o frontend à blockchain.
+
+  - **Exemplo:** Configurar uma conexão com a rede Ethereum e acessar contratos inteligentes.
+
+- **Interação com Contratos:** Enviar transações e chamar funções de contratos inteligentes a partir do frontend.
+
+  - **Exemplo:** Criar funções JavaScript que interajam com contratos para executar transações ou consultar dados.
+
+- **Autenticação de Usuário:** Utilizar carteiras de criptomoedas como MetaMask para autenticar usuários e assinar transações.
+  - **Exemplo:** Integrar MetaMask para permitir que os usuários se conectem ao dApp e realizem transações.
+
+## Boas Práticas de Desenvolvimento de Frontend
+
+Para garantir que o frontend do dApp seja eficiente e fácil de usar, siga estas boas práticas:
+
+- **Usabilidade:** Crie interfaces de usuário intuitivas e acessíveis para garantir uma boa experiência do usuário.
+
+  - **Exemplo:** Utilize componentes de interface claros e consistentes para facilitar a navegação.
+
+- **Desempenho:** Otimize o desempenho do frontend para garantir tempos de carregamento rápidos e interações suaves.
+
+  - **Exemplo:** Minimize o uso de bibliotecas pesadas e otimize imagens e recursos.
+
+- **Segurança:** Implemente práticas de segurança para proteger os dados do usuário e as interações com a blockchain.
+  - **Exemplo:** Valide todas as entradas do usuário e proteja contra ataques de injeção de código.
+
+## Exemplos Práticos
+
+- **Interface de Usuário para um dApp de Votação:**
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>dApp de Votação</title>
+      <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+      <div id="app">
+        <h1>Votação Descentralizada</h1>
+        <div id="propostas">
+          <!-- Lista de propostas será carregada aqui -->
+        </div>
+        <button id="votar">Votar</button>
+      </div>
+      <script src="app.js"></script>
+    </body>
+  </html>
+  ```
+
+- **Script JavaScript para Interação com a Blockchain:**
+
+  ```javascript
+  const Web3 = require("web3");
+  const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+
+  const contractAddress = "0x..."; // Endereço do contrato
+  const contractABI = [
+    /* ABI do contrato */
+  ];
+
+  const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+  async function carregarPropostas() {
+    const propostas = await contract.methods.getPropostas().call();
+    // Atualizar a interface com as propostas
+  }
+
+  document.getElementById("votar").addEventListener("click", async () => {
+    const accounts = await web3.eth.requestAccounts();
+    await contract.methods.votar(0).send({ from: accounts[0] });
+  });
+
+  carregarPropostas();
+  ```

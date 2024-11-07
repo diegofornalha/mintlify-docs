@@ -17,3 +17,77 @@ A toolbox da Trail of Bits também se destaca por sua capacidade de gerar relat�
 Para maximizar o valor desta suite de ferramentas, é crucial compreender como cada componente se complementa e como orquestrar seu uso efetivamente. Uma estratégia comum é começar com análises rápidas usando Slither para identificar problemas óbvios, seguido por análises mais profundas com Manticore em áreas específicas de preocupação, e finalmente usar Echidna para teste extensivo de propriedades específicas do contrato.
 
 A constante evolução do ecossistema Ethereum e o surgimento de novos vetores de ataque tornam essencial manter estas ferramentas atualizadas. A Trail of Bits mantém um compromisso contínuo com o desenvolvimento e aprimoramento de suas ferramentas, garantindo que permaneçam eficazes contra ameaças emergentes e novas vulnerabilidades.
+
+# Testes de Integração para dApps
+
+Nesta aula, vamos explorar a importância dos testes de integração em aplicações descentralizadas (dApps) e como realizá-los de forma eficaz para garantir que todos os componentes do sistema funcionem juntos sem problemas.
+
+## Importância dos Testes de Integração
+
+Os testes de integração são cruciais para verificar a interação entre diferentes componentes de um dApp, como o frontend, contratos inteligentes e a blockchain. Eles ajudam a identificar problemas que podem não ser evidentes em testes unitários.
+
+- **Verificação de Interação:** Assegura que todos os componentes do dApp se comuniquem corretamente.
+- **Detecção de Erros de Integração:** Identifica problemas que surgem quando diferentes partes do sistema interagem.
+- **Garantia de Funcionalidade Completa:** Garante que o dApp funcione conforme esperado em um ambiente realista.
+
+## Abordagem para Testes de Integração
+
+Para realizar testes de integração eficazes, siga estas etapas:
+
+1. **Planejamento de Testes:**
+
+   - **Definição de Escopo:** Determine quais interações e fluxos de trabalho serão testados.
+   - **Identificação de Dependências:** Liste todas as dependências externas, como APIs e serviços de terceiros.
+
+2. **Configuração do Ambiente de Teste:**
+
+   - **Ambiente de Teste Realista:** Configure um ambiente que simule as condições reais de operação do dApp.
+   - **Uso de Redes de Teste:** Utilize redes de teste como Ropsten ou Kovan para testar interações com a blockchain.
+
+3. **Execução de Testes:**
+
+   - **Testes de Fluxo de Trabalho:** Verifique se os fluxos de trabalho do usuário funcionam conforme esperado.
+   - **Testes de Comunicação:** Assegure-se de que a comunicação entre o frontend e os contratos inteligentes seja precisa e confiável.
+
+4. **Análise de Resultados:**
+   - **Identificação de Problemas:** Analise os resultados dos testes para identificar falhas de integração.
+   - **Correção de Erros:** Trabalhe com a equipe de desenvolvimento para corrigir quaisquer problemas identificados.
+
+## Ferramentas para Testes de Integração
+
+Existem várias ferramentas que podem ajudar a realizar testes de integração em dApps:
+
+- **Truffle Suite:** Oferece suporte a testes de integração e migrações de contratos inteligentes.
+- **Hardhat:** Um ambiente de desenvolvimento flexível que suporta testes de integração e scripts personalizados.
+- **Ganache:** Permite simular uma blockchain local para testar contratos sem custos de gas.
+
+## Boas Práticas de Testes de Integração
+
+Para garantir que os testes de integração sejam eficazes, siga estas boas práticas:
+
+- **Automação de Testes:** Utilize frameworks de teste para automatizar a execução de testes de integração.
+- **Cobertura Abrangente:** Assegure-se de que todos os fluxos de trabalho críticos sejam cobertos pelos testes.
+- **Documentação de Resultados:** Documente todos os resultados dos testes e as correções realizadas para referência futura.
+
+## Exemplos Práticos
+
+- **Teste de Integração para um dApp de Votação:**
+
+  ```javascript
+  const { expect } = require("chai");
+  const { ethers } = require("hardhat");
+
+  describe("Votacao", function () {
+    it("Deve permitir que um usuário vote em uma proposta", async function () {
+      const Votacao = await ethers.getContractFactory("Votacao");
+      const votacao = await Votacao.deploy();
+      await votacao.deployed();
+
+      await votacao.criarProposta("Proposta 1");
+      await votacao.votar(0);
+
+      const proposta = await votacao.propostas(0);
+      expect(proposta.votos).to.equal(1);
+    });
+  });
+  ```

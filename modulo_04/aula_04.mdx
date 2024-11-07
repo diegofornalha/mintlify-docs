@@ -15,3 +15,82 @@ Além da detecção de vulnerabilidades, o Echidna oferece recursos avançados p
 A robustez do Echidna se estende à sua capacidade de integração com pipelines de CI/CD, permitindo que testes de fuzzing sejam executados automaticamente como parte do processo de desenvolvimento. Isso estabelece uma camada adicional de segurança, garantindo que modificações no código não introduzam vulnerabilidades inadvertidamente.
 
 Para desenvolvedores e auditores de smart contracts, o domínio do Echidna representa uma habilidade fundamental no arsenal de segurança blockchain. A ferramenta não apenas ajuda a identificar vulnerabilidades críticas antes do deployment, mas também contribui para uma compreensão mais profunda do comportamento do contrato sob diferentes condições de execução, resultando em smart contracts mais seguros e confiáveis.
+
+# Integração com Carteiras de Criptomoedas
+
+Nesta aula, vamos explorar como integrar carteiras de criptomoedas em aplicações descentralizadas (dApps), permitindo que os usuários interajam com a blockchain de forma segura e eficiente.
+
+## O Papel das Carteiras de Criptomoedas
+
+As carteiras de criptomoedas são ferramentas essenciais para a interação com dApps, pois permitem que os usuários armazenem, enviem e recebam criptomoedas. Elas também são usadas para assinar transações e autenticar usuários em dApps.
+
+- **Armazenamento de Chaves Privadas:** As carteiras armazenam chaves privadas que são usadas para assinar transações e acessar fundos.
+- **Assinatura de Transações:** As carteiras permitem que os usuários assinem transações de forma segura, garantindo que apenas o proprietário da chave privada possa autorizar transferências.
+- **Autenticação de Usuário:** As carteiras podem ser usadas para autenticar usuários em dApps, eliminando a necessidade de senhas tradicionais.
+
+## Tipos de Carteiras
+
+Existem vários tipos de carteiras de criptomoedas, cada uma com suas próprias características e casos de uso:
+
+- **Carteiras de Software:** Aplicativos que podem ser instalados em dispositivos móveis ou computadores. Exemplos incluem MetaMask e Trust Wallet.
+
+  - **Vantagens:** Convenientes e fáceis de usar, com suporte a uma ampla gama de criptomoedas.
+  - **Desvantagens:** Vulneráveis a malware e ataques de phishing.
+
+- **Carteiras de Hardware:** Dispositivos físicos que armazenam chaves privadas offline. Exemplos incluem Ledger e Trezor.
+
+  - **Vantagens:** Altamente seguras, pois as chaves privadas nunca são expostas a dispositivos conectados à internet.
+  - **Desvantagens:** Menos convenientes para transações frequentes.
+
+- **Carteiras de Papel:** Impressões físicas das chaves privadas e endereços públicos.
+  - **Vantagens:** Totalmente offline e imunes a ataques digitais.
+  - **Desvantagens:** Suscetíveis a danos físicos e perda.
+
+## Integração com dApps
+
+Integrar carteiras de criptomoedas em dApps é essencial para permitir que os usuários interajam com a blockchain. Isso envolve:
+
+- **Conexão com Carteiras:** Utilizar APIs e bibliotecas para conectar o dApp a carteiras de criptomoedas.
+
+  - **Exemplo:** Usar a API do MetaMask para permitir que os usuários se conectem ao dApp e assinem transações.
+
+- **Assinatura de Transações:** Implementar funcionalidades que permitam aos usuários assinar transações diretamente do dApp.
+
+  - **Exemplo:** Criar funções JavaScript que interajam com a carteira para assinar e enviar transações.
+
+- **Autenticação de Usuário:** Utilizar carteiras para autenticar usuários e gerenciar sessões de forma segura.
+  - **Exemplo:** Implementar um fluxo de autenticação que utilize a assinatura de mensagens para verificar a identidade do usuário.
+
+## Boas Práticas de Integração
+
+Para garantir que a integração com carteiras de criptomoedas seja segura e eficiente, siga estas boas práticas:
+
+- **Segurança:** Implemente medidas de segurança para proteger as chaves privadas e as transações dos usuários.
+
+  - **Exemplo:** Valide todas as entradas do usuário e proteja contra ataques de phishing.
+
+- **Usabilidade:** Crie interfaces de usuário intuitivas que facilitem a conexão e o uso de carteiras.
+
+  - **Exemplo:** Forneça instruções claras sobre como conectar e usar carteiras no dApp.
+
+- **Compatibilidade:** Garanta que o dApp seja compatível com uma ampla gama de carteiras para maximizar o alcance do usuário.
+  - **Exemplo:** Teste a integração com diferentes carteiras para garantir a compatibilidade.
+
+## Exemplos Práticos
+
+- **Integração com MetaMask:**
+
+  ```javascript
+  if (typeof window.ethereum !== "undefined") {
+    console.log("MetaMask está instalado!");
+  }
+
+  async function conectarCarteira() {
+    const contas = await ethereum.request({ method: "eth_requestAccounts" });
+    console.log("Conectado à conta:", contas[0]);
+  }
+
+  document
+    .getElementById("conectar")
+    .addEventListener("click", conectarCarteira);
+  ```
