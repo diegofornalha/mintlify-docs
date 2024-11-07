@@ -17,7 +17,7 @@
   },
   "navigation": [
     {
-      "group": "Introdução",
+      "group": "Auditoria em Solidity",
       "pages": ["introduction", "quickstart", "development"]
     },
     {
@@ -34,14 +34,6 @@
     {
       "group": "Documentação da API",
       "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Exemplos de Endpoints",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
     }
   ],
   "footerSocials": {
