@@ -1,9 +1,56 @@
 # Uso de Funções View e Pure
 
-Como funções que não alteram o estado ajudam na economia de gas e melhoram a eficiência.
+Nesta aula, vamos explorar como o uso de funções `view` e `pure` em contratos inteligentes pode ajudar na economia de gas. Essas funções são essenciais para otimizar o consumo de gas, pois não alteram o estado do contrato.
 
-## Tópicos abordados:
+## Importância das Funções View e Pure
 
-- Diferença entre funções view e pure
-- Exemplos de uso eficaz
-- Benefícios de economia de gas
+Funções `view` e `pure` são usadas para realizar operações que não alteram o estado do contrato, o que significa que elas não consomem gas quando chamadas externamente. Isso é crucial para:
+
+- **Reduzir Custos de Transação:** Funções que não alteram o estado não consomem gas, tornando as interações mais econômicas.
+- **Melhorar a Eficiência:** Permitem que cálculos e consultas sejam realizados sem custos adicionais de gas.
+- **Aumentar a Adoção:** Custos mais baixos incentivam mais usuários a interagir com o contrato.
+
+## Diferença entre Funções View e Pure
+
+### Funções View
+
+- **Descrição:** Funções `view` podem ler o estado do contrato, mas não podem alterá-lo.
+- **Exemplo:** Usadas para retornar valores armazenados no contrato.
+
+  ```solidity
+  function getSaldo() public view returns (uint256) {
+      return saldo;
+  }
+  ```
+
+### Funções Pure
+
+- **Descrição:** Funções `pure` não podem ler nem alterar o estado do contrato. Elas são usadas para cálculos que não dependem do estado do contrato.
+- **Exemplo:** Usadas para realizar cálculos matemáticos.
+
+  ```solidity
+  function somar(uint256 a, uint256 b) public pure returns (uint256) {
+      return a + b;
+  }
+  ```
+
+## Benefícios do Uso de Funções View e Pure
+
+### Economia de Gas
+
+- **Funções Externas:** Quando chamadas externamente, funções `view` e `pure` não consomem gas, pois não alteram o estado.
+- **Consultas e Cálculos:** Permitem que consultas e cálculos sejam realizados sem custos adicionais de gas.
+
+### Melhoria da Segurança
+
+- **Imutabilidade:** Garantem que o estado do contrato não seja alterado, aumentando a segurança e a previsibilidade do contrato.
+
+## Boas Práticas de Uso de Funções View e Pure
+
+- **Identificação de Operações:** Identifique operações que não alteram o estado e implemente-as como funções `view` ou `pure`.
+- **Revisão de Código:** Revise regularmente o código para garantir que funções que não alteram o estado sejam corretamente marcadas como `view` ou `pure`.
+- **Documentação:** Documente claramente o uso de funções `view` e `pure` para garantir que outros desenvolvedores entendam sua finalidade e limitações.
+
+## Conclusão
+
+O uso de funções `view` e `pure` é uma prática essencial para garantir que os contratos inteligentes sejam eficientes e econômicos. Ao implementar essas funções, os desenvolvedores podem reduzir custos de transação, melhorar o desempenho e aumentar a adoção de seus contratos. A implementação de práticas de otimização de gas e a integração de ferramentas de análise em pipelines de desenvolvimento são passos importantes para garantir a eficiência contínua dos contratos inteligentes.
