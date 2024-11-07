@@ -1,18 +1,18 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Auditoria em solidity",
+  "name": "Starter Kit",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#FF0000",
+    "light": "#FF6347",
+    "dark": "#FF0000",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#FF0000",
+      "to": "#FF6347"
     }
   },
   "topbarLinks": [
