@@ -1,22 +1,65 @@
-4. **Revisão Manual e Inspeção de Código**
-   - Importância da revisão manual:
-     - A revisão manual permite identificar problemas que ferramentas automatizadas podem não detectar, como lógica de negócio incorreta ou problemas de usabilidade.
-     - Ajuda a garantir que o código esteja alinhado com os requisitos do projeto e as expectativas do cliente.
-   - Processo de revisão manual:
-     - Leitura cuidadosa e análise de cada linha de código para verificar sua correção e eficiência.
-     - Verificação de conformidade com os padrões de codificação e boas práticas estabelecidas.
-     - Identificação de possíveis melhorias na estrutura e legibilidade do código.
-   - Ferramentas e técnicas de apoio:
-     - Utilização de checklists para garantir que todos os aspectos importantes sejam revisados.
-     - Ferramentas de revisão de código, como GitHub Pull Requests, que facilitam a colaboração e o feedback entre os desenvolvedores.
-   - Benefícios da revisão manual:
-     - Melhoria na qualidade do código, reduzindo a quantidade de bugs e problemas de manutenção.
-     - Aumento do conhecimento da equipe sobre o código, promovendo a disseminação de boas práticas e padrões.
-     - Detecção precoce de problemas, permitindo correções antes que se tornem mais complexas e custosas.
-   - Boas práticas para revisão manual:
-     - Realizar revisões regulares e frequentes, evitando acumular grandes volumes de código para revisão de uma só vez.
-     - Encorajar a participação de diferentes membros da equipe para obter múltiplas perspectivas e insights.
-     - Documentar as observações e sugestões de melhoria, facilitando a implementação das mudanças necessárias.
-   - Conclusão:
-     - A revisão manual e inspeção de código são etapas essenciais para garantir a qualidade e a segurança do software.
-     - Quando combinadas com outras técnicas de verificação, como testes automatizados e análise estática, proporcionam uma abordagem robusta para o desenvolvimento de software de alta qualidade.
+# Testes e Depuração de Contratos Inteligentes
+
+Nesta aula, vamos explorar as técnicas e ferramentas para testar e depurar contratos inteligentes, garantindo que eles funcionem conforme o esperado e estejam livres de vulnerabilidades.
+
+## Importância dos Testes
+
+Testar contratos inteligentes é crucial para garantir que eles funcionem corretamente e sejam seguros. Os testes ajudam a identificar erros e vulnerabilidades antes do deployment, reduzindo o risco de falhas e explorações.
+
+- **Detecção de Erros:** Identifica bugs e falhas na lógica do contrato.
+- **Validação de Funcionalidade:** Garante que o contrato funcione conforme especificado.
+- **Segurança:** Ajuda a identificar vulnerabilidades de segurança que possam ser exploradas por atacantes.
+
+## Tipos de Testes
+
+Existem vários tipos de testes que podem ser realizados em contratos inteligentes:
+
+- **Testes Unitários:** Verificam a funcionalidade de partes individuais do contrato, como funções e módulos. São rápidos e fáceis de executar.
+
+  - **Exemplo:** Testar uma função de transferência para garantir que ela atualize corretamente os saldos.
+
+- **Testes de Integração:** Avaliam a interação entre diferentes partes do contrato e com outros contratos ou sistemas externos.
+
+  - **Exemplo:** Testar a interação entre um contrato de token e um contrato de troca.
+
+- **Testes de Segurança:** Focados em identificar vulnerabilidades de segurança, como reentrância e overflow.
+  - **Exemplo:** Simular ataques de reentrância para verificar a resiliência do contrato.
+
+## Ferramentas de Teste
+
+Várias ferramentas estão disponíveis para ajudar no teste de contratos inteligentes:
+
+- **Truffle:** Um framework de desenvolvimento que inclui suporte a testes automatizados.
+
+  - **Funcionalidades:** Suporte a testes unitários e de integração, migrações e gerenciamento de rede.
+
+- **Hardhat:** Um ambiente de desenvolvimento flexível que suporta testes e scripts personalizados.
+
+  - **Funcionalidades:** Suporte a testes automatizados, depuração e simulação de rede.
+
+- **Ganache:** Uma blockchain local que permite testar contratos sem custos de gas.
+  - **Funcionalidades:** Simulação de rede, controle de contas e transações.
+
+## Técnicas de Depuração
+
+Depurar contratos inteligentes é essencial para identificar e corrigir erros. As técnicas incluem:
+
+- **Uso de Logs e Eventos:** Utilize eventos para registrar ações importantes e facilitar a depuração.
+
+  - **Exemplo:** Emitir um evento sempre que uma função crítica for chamada.
+
+- **Depuradores de Código:** Utilize depuradores para pausar a execução do contrato e inspecionar o estado.
+
+  - **Exemplo:** Usar o depurador do Remix para analisar o fluxo de execução.
+
+- **Análise de Fluxo de Dados:** Verifique o fluxo de dados para garantir que ele siga a lógica esperada.
+  - **Exemplo:** Inspecionar variáveis de estado para verificar se elas são atualizadas corretamente.
+
+## Boas Práticas de Teste e Depuração
+
+Para garantir que os testes e a depuração sejam eficazes, siga estas boas práticas:
+
+- **Cobertura de Testes:** Assegure-se de que todos os casos de uso e caminhos de execução sejam cobertos pelos testes.
+- **Automação de Testes:** Utilize frameworks de teste para automatizar a execução de testes e garantir consistência.
+- **Documentação de Resultados:** Documente todos os resultados dos testes e as correções realizadas para referência futura.
+- **Revisão Contínua:** Realize revisões contínuas do código e dos testes para identificar novas vulnerabilidades e áreas de melhoria.

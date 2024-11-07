@@ -20,3 +20,57 @@
    - **Conclusão:**
      - A correção e reexecução de testes são etapas cruciais para manter a qualidade e a segurança do software.
      - Um processo bem definido e automatizado de correção e reteste ajuda a identificar e resolver problemas de forma eficiente, garantindo a robustez do sistema.
+
+# Atualização e Manutenção de Contratos Inteligentes
+
+Nesta aula, vamos explorar as práticas e estratégias para a atualização e manutenção de contratos inteligentes, garantindo que eles permaneçam seguros e funcionais ao longo do tempo.
+
+## Desafios da Atualização de Contratos
+
+A atualização de contratos inteligentes apresenta desafios únicos devido à sua natureza imutável. Uma vez implantado, o código de um contrato não pode ser alterado, o que requer estratégias específicas para implementar atualizações.
+
+- **Imutabilidade:** A imutabilidade garante a integridade do contrato, mas impede alterações diretas no código.
+- **Compatibilidade:** Garantir que novas versões do contrato sejam compatíveis com versões anteriores para evitar interrupções.
+- **Segurança:** Manter a segurança durante o processo de atualização para evitar introduzir novas vulnerabilidades.
+
+## Estratégias de Atualização
+
+Existem várias estratégias para atualizar contratos inteligentes sem comprometer sua integridade:
+
+- **Contratos Proxies:** Utilize contratos proxies para encaminhar chamadas para a lógica do contrato real, permitindo atualizações sem alterar o endereço do contrato.
+
+  - **Vantagens:** Permite atualizações de lógica sem mudar o endereço do contrato.
+  - **Desvantagens:** Introduz complexidade adicional e requer auditorias rigorosas.
+
+- **Módulos de Atualização:** Divida a lógica do contrato em módulos que podem ser atualizados individualmente.
+
+  - **Vantagens:** Flexibilidade para atualizar partes específicas do contrato.
+  - **Desvantagens:** Pode aumentar a complexidade do contrato.
+
+- **Contratos de Governança:** Implemente contratos de governança que permitam que a comunidade vote em atualizações.
+  - **Vantagens:** Envolve a comunidade no processo de atualização.
+  - **Desvantagens:** Pode ser lento e sujeito a manipulação.
+
+## Manutenção Contínua
+
+A manutenção contínua é essencial para garantir que os contratos inteligentes permaneçam seguros e funcionais:
+
+- **Monitoramento de Segurança:** Implemente soluções de monitoramento para detectar e responder rapidamente a vulnerabilidades e ataques.
+
+  - **Exemplo:** Utilizar ferramentas de monitoramento para alertar sobre atividades suspeitas.
+
+- **Auditorias Regulares:** Realize auditorias de segurança regulares para identificar e corrigir novas vulnerabilidades.
+
+  - **Exemplo:** Contratar auditores externos para revisar o código periodicamente.
+
+- **Atualizações de Dependências:** Mantenha as bibliotecas e dependências do contrato atualizadas para garantir que estejam livres de vulnerabilidades conhecidas.
+  - **Exemplo:** Verificar regularmente por atualizações de bibliotecas como OpenZeppelin.
+
+## Boas Práticas de Atualização e Manutenção
+
+Para garantir que o contrato permaneça seguro e eficiente, siga estas boas práticas:
+
+- **Planejamento de Atualizações:** Planeje atualizações com antecedência e comunique-se com a comunidade sobre mudanças planejadas.
+- **Testes Rigorosos:** Realize testes rigorosos em ambientes de teste antes de implementar atualizações na rede principal.
+- **Documentação Detalhada:** Mantenha documentação detalhada de todas as atualizações e mudanças para referência futura.
+- **Engajamento da Comunidade:** Envolva a comunidade no processo de atualização para aumentar a transparência e a confiança.

@@ -1,25 +1,89 @@
-3. **Análise Estática com Ferramentas como Slither**
-   - Importância da análise estática:
-     - A análise estática é uma técnica de verificação de código que não requer a execução do programa.
-     - Ajuda a identificar vulnerabilidades e problemas de qualidade no código antes mesmo de ser executado.
-   - Ferramentas de análise estática:
-     - Slither: Uma ferramenta de análise estática para contratos inteligentes em Solidity.
-     - Outras ferramentas populares incluem SonarQube, ESLint e Pylint.
-   - Benefícios da análise estática:
-     - Detecção precoce de bugs e vulnerabilidades, reduzindo custos de correção.
-     - Melhoria na qualidade do código, garantindo que ele siga boas práticas e padrões de codificação.
-     - Aumento da segurança do software, identificando possíveis falhas de segurança.
-   - Exemplos de vulnerabilidades detectadas:
-     - Overflow e underflow de inteiros.
-     - Condições de corrida.
-     - Uso de variáveis não inicializadas.
-   - Boas práticas para análise estática:
-     - Integrar a análise estática no processo de desenvolvimento contínuo.
-     - Configurar as ferramentas para realizar verificações automáticas em cada commit ou pull request.
-     - Revisar regularmente os relatórios gerados pelas ferramentas e corrigir os problemas identificados.
-   - Limitações da análise estática:
-     - Pode gerar falsos positivos, ou seja, indicar problemas que não são reais.
-     - Não substitui a necessidade de testes dinâmicos e outras formas de verificação de código.
-   - Conclusão:
-     - A análise estática é uma etapa essencial no desenvolvimento de software seguro e de alta qualidade.
-     - Ferramentas como Slither são valiosas para detectar vulnerabilidades em contratos inteligentes, mas devem ser usadas em conjunto com outras técnicas de verificação.
+# Desenvolvimento de Contratos com Solidity
+
+Nesta aula, vamos explorar o desenvolvimento de contratos inteligentes utilizando a linguagem Solidity, abordando desde a sintaxe básica até conceitos avançados.
+
+## Sintaxe Básica de Solidity
+
+Solidity é uma linguagem de programação de alto nível inspirada em JavaScript, Python e C++. A sintaxe básica inclui:
+
+- **Declaração de Versão do Compilador:** Especifica a versão do compilador Solidity que deve ser usada.
+
+  - **Exemplo:** `pragma solidity ^0.8.0;`
+
+- **Estrutura de Contrato:** Define o escopo do contrato e seus componentes.
+
+  - **Exemplo:** `solidity
+contract MeuContrato {
+    // Código do contrato
+}    `
+
+- **Tipos de Dados:** Inclui tipos primitivos como `uint`, `int`, `bool`, `address`, `bytes`, e `string`.
+  - **Exemplo:** `solidity
+uint256 public numero;
+bool public ativo;    `
+
+## Funções e Modificadores
+
+As funções são blocos de código que executam ações específicas. Modificadores alteram o comportamento das funções.
+
+- **Declaração de Funções:** Define a lógica que pode ser executada dentro do contrato.
+
+  - **Exemplo:** `solidity
+function setNumero(uint256 _numero) public {
+    numero = _numero;
+}    `
+
+- **Modificadores de Função:** Adicionam condições ou restrições às funções.
+  - **Exemplo:** `solidity
+modifier somenteProprietario() {
+    require(msg.sender == proprietario, "Acesso negado");
+    _;
+}    `
+
+## Eventos e Logs
+
+Eventos são usados para emitir notificações que podem ser capturadas por aplicativos externos.
+
+- **Declaração de Eventos:** Define eventos que podem ser emitidos durante a execução do contrato.
+
+  - **Exemplo:** `solidity
+event NumeroAlterado(uint256 novoNumero);    `
+
+- **Emissão de Eventos:** Emite eventos para registrar ações importantes.
+  - **Exemplo:** `solidity
+function setNumero(uint256 _numero) public {
+    numero = _numero;
+    emit NumeroAlterado(_numero);
+}    `
+
+## Herança e Interfaces
+
+Solidity suporta herança, permitindo que contratos compartilhem funcionalidades.
+
+- **Herança:** Permite que um contrato herde propriedades e métodos de outro contrato.
+
+  - **Exemplo:** ```solidity
+    contract Base {
+    function saudacao() public pure returns (string memory) {
+    return "Ola";
+    }
+    }
+
+    contract Derivado is Base {
+    // Herda a função saudacao
+    } ```
+
+- **Interfaces:** Definem contratos que outros contratos devem implementar.
+  - **Exemplo:** `solidity
+interface IContrato {
+    function executar() external;
+}    `
+
+## Boas Práticas de Desenvolvimento
+
+Para garantir que o contrato seja seguro e eficiente, siga estas boas práticas:
+
+- **Validação de Entradas:** Sempre valide as entradas do usuário para evitar erros e vulnerabilidades.
+- **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso.
+- **Emissão de Eventos:** Emita eventos para registrar ações importantes e facilitar a auditoria.
+- **Reutilização de Código:** Utilize herança e bibliotecas para evitar duplicação de código.

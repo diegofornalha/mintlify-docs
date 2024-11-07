@@ -1,15 +1,67 @@
-10. **Documentação e Registro de Achados na Auditoria**
-    - **Importância da Documentação:** A documentação adequada dos achados na auditoria é crucial para garantir a transparência e a rastreabilidade do processo. Ela serve como um registro oficial das vulnerabilidades identificadas, das ações corretivas recomendadas e das medidas implementadas.
-    - **Estrutura do Relatório de Auditoria:**
-      - **Resumo Executivo:** Forneça uma visão geral dos principais achados e recomendações. Este resumo deve ser claro e conciso, direcionado a stakeholders que podem não ter conhecimento técnico detalhado.
-      - **Descrição dos Achados:** Documente cada vulnerabilidade identificada com detalhes, incluindo a localização no código, a descrição do problema, a gravidade e a probabilidade de exploração.
-      - **Recomendações:** Para cada achado, forneça recomendações específicas e práticas para a correção das vulnerabilidades. Inclua exemplos de código ou referências a boas práticas quando aplicável.
-      - **Evidências:** Anexe evidências que suportem os achados, como capturas de tela, logs de sistema, ou saídas de ferramentas de análise.
-      - **Plano de Ação:** Detalhe um plano de ação para a implementação das correções, incluindo prazos e responsáveis.
-    - **Ferramentas de Documentação:** Utilize ferramentas como JIRA, Confluence ou outras plataformas de gerenciamento de projetos para registrar e acompanhar os achados e as ações corretivas.
-    - **Boas Práticas:**
-      - **Consistência:** Mantenha um formato consistente em todos os relatórios de auditoria para facilitar a leitura e a comparação.
-      - **Clareza:** Use uma linguagem clara e objetiva, evitando jargões técnicos desnecessários.
-      - **Atualização Contínua:** Revise e atualize a documentação regularmente para refletir o status atual das vulnerabilidades e das ações corretivas.
-      - **Confidencialidade:** Garanta que a documentação seja armazenada de forma segura e acessível apenas a pessoas autorizadas.
-    - **Conclusão:** A documentação e o registro de achados na auditoria são componentes essenciais para a gestão eficaz de vulnerabilidades. Um relatório bem estruturado e detalhado não só facilita a correção de problemas, mas também serve como um recurso valioso para futuras auditorias e para a melhoria contínua do processo de desenvolvimento.
+# Projeto Final: Desenvolvimento de um Contrato Inteligente Completo
+
+Nesta aula, vamos aplicar todos os conceitos aprendidos ao longo do módulo para desenvolver um contrato inteligente completo, desde a concepção até a implantação e documentação.
+
+## Definição do Projeto
+
+O primeiro passo no desenvolvimento de um contrato inteligente é definir claramente o escopo e os objetivos do projeto. Isso inclui:
+
+- **Objetivo do Contrato:** Determine a finalidade do contrato e os problemas que ele deve resolver.
+
+  - **Exemplo:** Criar um contrato de token ERC-20 para facilitar transações de criptomoedas.
+
+- **Requisitos Funcionais:** Liste as funcionalidades que o contrato deve ter.
+
+  - **Exemplo:** Funções para transferir tokens, verificar saldos e aprovar transações.
+
+- **Requisitos Não Funcionais:** Defina critérios de desempenho, segurança e usabilidade.
+  - **Exemplo:** O contrato deve ser eficiente em termos de gas e seguro contra ataques de reentrância.
+
+## Desenvolvimento do Contrato
+
+Com os requisitos definidos, o próximo passo é desenvolver o contrato inteligente utilizando as melhores práticas de codificação.
+
+- **Estrutura do Contrato:** Organize o contrato em módulos e funções claras.
+
+  - **Exemplo:** Separe a lógica de transferência de tokens da lógica de aprovação.
+
+- **Implementação de Funcionalidades:** Codifique as funcionalidades definidas nos requisitos.
+
+  - **Exemplo:** Utilize Solidity para implementar funções de transferência e verificação de saldo.
+
+- **Uso de Bibliotecas:** Integre bibliotecas confiáveis para aumentar a segurança e eficiência.
+  - **Exemplo:** Utilize OpenZeppelin para implementar padrões de token ERC-20.
+
+## Testes e Validação
+
+Antes de implantar o contrato, é crucial realizar testes rigorosos para garantir que ele funcione conforme esperado.
+
+- **Testes Unitários:** Verifique cada função individualmente para garantir que ela funcione corretamente.
+
+  - **Exemplo:** Teste a função de transferência para garantir que ela atualize corretamente os saldos.
+
+- **Testes de Integração:** Avalie a interação entre diferentes partes do contrato.
+
+  - **Exemplo:** Teste a interação entre a função de transferência e a função de aprovação.
+
+- **Testes de Segurança:** Identifique e corrija vulnerabilidades de segurança.
+  - **Exemplo:** Realize testes de reentrância para garantir que o contrato seja seguro.
+
+## Implantação e Documentação
+
+Após a validação, o contrato está pronto para ser implantado na blockchain e documentado adequadamente.
+
+- **Implantação na Blockchain:** Utilize ferramentas como Truffle ou Hardhat para implantar o contrato em uma rede de teste e, posteriormente, na rede principal.
+
+  - **Exemplo:** Implante o contrato na rede Ethereum usando Hardhat.
+
+- **Documentação Completa:** Crie documentação detalhada para facilitar a manutenção e auditoria do contrato.
+  - **Exemplo:** Utilize NatSpec para documentar funções e variáveis, e crie um guia de usuário para explicar como interagir com o contrato.
+
+## Revisão e Feedback
+
+Após a implantação, é importante revisar o projeto e coletar feedback para melhorias futuras.
+
+- **Revisão de Código:** Realize uma revisão final do código para garantir que ele esteja otimizado e seguro.
+- **Coleta de Feedback:** Obtenha feedback de usuários e desenvolvedores para identificar áreas de melhoria.
+- **Planejamento de Atualizações:** Planeje atualizações futuras com base no feedback recebido e nas mudanças no ambiente de blockchain.

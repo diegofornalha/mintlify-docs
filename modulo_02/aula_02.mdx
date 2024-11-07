@@ -1,15 +1,73 @@
-2. **Testes de Cobertura e Funcionalidade**
-   - Importância de garantir a cobertura de código:
-     - A cobertura de código é uma métrica que indica a quantidade de código que é testada por um conjunto de testes.
-     - Garantir uma alta cobertura de código ajuda a identificar partes do código que não foram testadas, reduzindo a chance de bugs.
-     - Ferramentas como JaCoCo, Cobertura e Istanbul podem ser usadas para medir a cobertura de código.
-   - Testes básicos e sua importância:
-     - Testes unitários: Verificam o funcionamento de unidades individuais do código, como funções ou métodos.
-     - Testes de integração: Avaliam a interação entre diferentes módulos ou componentes do sistema.
-     - Testes de sistema: Testam o sistema como um todo, garantindo que todos os componentes funcionem corretamente juntos.
-     - Testes de aceitação: Validam se o sistema atende aos requisitos e expectativas do usuário final.
-   - Boas práticas para testes:
-     - Escrever testes claros e concisos que cubram diferentes cenários.
-     - Manter os testes atualizados conforme o código evolui.
-     - Automatizar a execução dos testes para garantir eficiência e consistência.
-     - Revisar e refatorar testes regularmente para melhorar sua qualidade e cobertura.
+# Estrutura de um Contrato Inteligente
+
+Nesta aula, vamos explorar a estrutura básica de um contrato inteligente, incluindo os componentes essenciais e como eles interagem para formar um contrato funcional.
+
+## Componentes Essenciais de um Contrato
+
+Um contrato inteligente é composto por vários componentes que definem sua funcionalidade e comportamento. Os principais componentes incluem:
+
+- **Variáveis de Estado:** Armazenam dados persistentes que são mantidos na blockchain. Elas representam o estado do contrato e podem ser acessadas e modificadas por funções do contrato.
+
+  - **Exemplos:** Saldos de contas, dados de configuração, registros de usuários.
+
+- **Funções:** Executam ações específicas e podem modificar o estado do contrato. As funções são a principal forma de interação com o contrato.
+
+  - **Tipos de Funções:** Públicas, privadas, de leitura (view) e de escrita (modificadoras de estado).
+
+- **Eventos:** Permitem que o contrato emita notificações que podem ser capturadas por aplicativos externos. Eventos são usados para registrar ações importantes e facilitar a comunicação entre o contrato e o mundo externo.
+
+  - **Uso Comum:** Registro de transferências, alterações de estado, notificações de erro.
+
+- **Modificadores:** Alteram o comportamento de funções, adicionando condições ou restrições. Eles são usados para implementar lógica de controle de acesso e validação de condições.
+  - **Exemplos:** Restringir o acesso a funções a apenas o proprietário do contrato.
+
+## Estruturação de um Contrato
+
+A estrutura de um contrato inteligente segue um padrão que facilita a organização e a legibilidade do código. A estrutura básica inclui:
+
+1. **Declaração de Versão do Compilador:** Especifica a versão do compilador Solidity que deve ser usada para compilar o contrato.
+
+   - **Exemplo:** `pragma solidity ^0.8.0;`
+
+2. **Declaração do Contrato:** Define o nome do contrato e inicia o escopo do código.
+
+   - **Exemplo:** `contract MeuContrato { ... }`
+
+3. **Declaração de Variáveis de Estado:** Define as variáveis que armazenam o estado do contrato.
+
+   - **Exemplo:** `uint256 public saldo;`
+
+4. **Definição de Funções:** Implementa a lógica do contrato através de funções que podem ser chamadas externamente ou internamente.
+
+   - **Exemplo:** `solidity
+function depositar(uint256 valor) public {
+    saldo += valor;
+}     `
+
+5. **Definição de Eventos:** Declara eventos que podem ser emitidos durante a execução do contrato.
+
+   - **Exemplo:** `event Deposito(address indexed de, uint256 valor);`
+
+6. **Implementação de Modificadores:** Define modificadores que podem ser aplicados a funções para alterar seu comportamento.
+   - **Exemplo:** `solidity
+modifier apenasProprietario() {
+    require(msg.sender == proprietario, "Acesso negado");
+    _;
+}     `
+
+## Interação entre Componentes
+
+Os componentes de um contrato inteligente interagem para formar um sistema coeso e funcional. A interação entre variáveis, funções, eventos e modificadores é essencial para a operação do contrato.
+
+- **Funções e Variáveis:** Funções acessam e modificam variáveis de estado para alterar o estado do contrato.
+- **Eventos e Funções:** Funções emitem eventos para notificar aplicativos externos sobre ações importantes.
+- **Modificadores e Funções:** Modificadores são aplicados a funções para adicionar lógica de controle de acesso e validação.
+
+## Boas Práticas de Estruturação
+
+Para garantir que o contrato seja seguro, eficiente e fácil de manter, siga estas boas práticas de estruturação:
+
+- **Organização do Código:** Mantenha o código organizado e bem comentado para facilitar a leitura e a manutenção.
+- **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso e evitar duplicação de código.
+- **Emissão de Eventos:** Emita eventos para registrar ações importantes e facilitar a auditoria do contrato.
+- **Validação de Entradas:** Valide todas as entradas de usuário para evitar erros e vulnerabilidades.

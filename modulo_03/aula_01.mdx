@@ -1,91 +1,78 @@
-1. **Ataques de Reentrância**
+# Introdução à Programação em Solidity
 
-   - **Descrição Detalhada**: Ataques de reentrância são uma técnica maliciosa utilizada em contratos inteligentes, onde um contrato atacante faz chamadas repetidas a um contrato alvo antes que o estado deste seja devidamente atualizado. Isso pode resultar em saques indevidos de fundos ou manipulações indesejadas. Por exemplo, em um contrato de saque, se o saldo do usuário não for atualizado antes de permitir novas retiradas, um atacante pode explorar essa falha para sacar mais do que o permitido.
+Nesta aula, vamos explorar os fundamentos da programação em Solidity, a linguagem de programação mais utilizada para o desenvolvimento de contratos inteligentes na blockchain Ethereum.
 
-   - **Exemplos Práticos**:
+## História e Evolução do Solidity
 
-     - _Exemplo 1_: Considere um contrato de doação que permite retiradas. Um atacante pode explorar o contrato chamando repetidamente a função de retirada antes que o saldo do doador seja atualizado, resultando em saques excessivos.
+Solidity foi desenvolvida especificamente para a criação de contratos inteligentes na plataforma Ethereum. Desde seu lançamento, a linguagem passou por várias atualizações para melhorar sua segurança, eficiência e funcionalidade.
 
-     ```solidity
-     function withdraw(uint _amount) public {
-         require(balances[msg.sender] >= _amount);
-         (bool success, ) = msg.sender.call{value: _amount}("");
-         require(success);
-         balances[msg.sender] -= _amount;
-     }
-     ```
+- **Lançamento Inicial:** Introduzida em 2014, Solidity foi projetada para ser uma linguagem de alto nível, semelhante a JavaScript, para facilitar a adoção por desenvolvedores web.
+- **Evolução Contínua:** Com o tempo, a linguagem incorporou novos recursos, como suporte a bibliotecas, interfaces e herança, para atender às necessidades crescentes dos desenvolvedores de contratos inteligentes.
 
-     - _Exemplo 2_: Em um contrato de leilão, um atacante pode fazer lances repetidos para manipular o valor final do leilão, explorando a falta de verificação de estado entre as chamadas.
+## Estrutura Básica de um Contrato Solidity
 
-     ```solidity
-     function bid() public payable {
-         require(msg.value > highestBid);
-         if (highestBidder != address(0)) {
-             highestBidder.transfer(highestBid);
-         }
-         highestBidder = msg.sender;
-         highestBid = msg.value;
-     }
-     ```
+Um contrato em Solidity é composto por várias partes essenciais que definem sua funcionalidade e comportamento.
 
-   - **Métodos de Prevenção**: Para prevenir ataques de reentrância, é essencial implementar padrões de design seguros, como o padrão "check-effects-interactions", que garante que todas as verificações de estado e atualizações sejam feitas antes de qualquer interação externa. Além disso, o uso de mutexes ou bloqueios pode ajudar a evitar chamadas reentrantes. Ferramentas de análise de segurança, como o MythX, podem ser usadas para identificar vulnerabilidades de reentrância em contratos inteligentes.
+- **Declaração de Versão do Compilador:** Especifica a versão do compilador Solidity que deve ser usada para compilar o contrato.
 
-     ```solidity
-     function withdraw(uint _amount) public {
-         require(balances[msg.sender] >= _amount);
-         balances[msg.sender] -= _amount;
-         (bool success, ) = msg.sender.call{value: _amount}("");
-         require(success);
-     }
-     ```
+  - **Exemplo:** `pragma solidity ^0.8.0;`
 
-   - **Ferramentas e Recursos**: Ferramentas como o Remix IDE e o Truffle Suite oferecem plugins e bibliotecas que ajudam a detectar e mitigar vulnerabilidades de reentrância. Recursos educacionais, como tutoriais e workshops, também são valiosos para entender e aplicar as melhores práticas de segurança.
+- **Declaração do Contrato:** Define o nome do contrato e inicia o escopo do código.
 
-   - **Exercícios Práticos**:
+  - **Exemplo:**
+    ```solidity
+    contract MeuContrato {
+        // Código do contrato
+    }
+    ```
 
-     - _Exercício 1_: Implemente um contrato de saque seguro que previna ataques de reentrância. Teste o contrato com diferentes cenários de ataque e verifique se ele se comporta conforme esperado.
+- **Variáveis de Estado:** Armazenam dados persistentes que são mantidos na blockchain.
 
-     ```solidity
-     contract SafeWithdraw {
-         mapping(address => uint) public balances;
+  - **Exemplo:**
+    ```solidity
+    uint256 public saldo;
+    ```
 
-         function deposit() public payable {
-             balances[msg.sender] += msg.value;
-         }
+- **Funções:** Executam ações específicas e podem modificar o estado do contrato.
+  - **Exemplo:**
+    ```solidity
+    function depositar(uint256 valor) public {
+        saldo += valor;
+    }
+    ```
 
-         function withdraw(uint _amount) public {
-             require(balances[msg.sender] >= _amount);
-             balances[msg.sender] -= _amount;
-             (bool success, ) = msg.sender.call{value: _amount}("");
-             require(success);
-         }
-     }
-     ```
+## Tipos de Dados em Solidity
 
-     - _Exercício 2_: Analise um contrato vulnerável a reentrância e modifique-o para corrigir a vulnerabilidade. Documente as mudanças feitas e explique por que elas são eficazes.
-     - _Exemplo de Exercício_: Crie um contrato simples que simule um banco onde usuários podem depositar e sacar fundos. Introduza uma vulnerabilidade de reentrância intencionalmente e, em seguida, corrija-a. Explique o processo de correção e como a vulnerabilidade foi explorada.
+Solidity suporta uma variedade de tipos de dados que permitem a manipulação de informações de forma eficiente.
 
-     ```solidity
-     contract SimpleBank {
-         mapping(address => uint) public balances;
+- **Tipos Inteiros:** `uint`, `int` - usados para representar números inteiros.
+- **Tipos de Endereço:** `address` - usado para armazenar endereços de contas.
+- **Tipos de Dados Booleanos:** `bool` - usado para representar valores verdadeiros ou falsos.
+- **Tipos de Dados de Bytes:** `bytes`, `string` - usados para armazenar dados binários e texto.
 
-         function deposit() public payable {
-             balances[msg.sender] += msg.value;
-         }
+## Boas Práticas de Programação
 
-         function withdraw(uint _amount) public {
-             require(balances[msg.sender] >= _amount);
-             (bool success, ) = msg.sender.call{value: _amount}("");
-             require(success);
-             balances[msg.sender] -= _amount; // Vulnerabilidade: atualização de saldo após a transferência
-         }
+Para garantir que o contrato seja seguro e eficiente, siga estas boas práticas de programação:
 
-         // Corrigido
-         function safeWithdraw(uint _amount) public {
-             require(balances[msg.sender] >= _amount);
-             balances[msg.sender] -= _amount;
-             (bool success, ) = msg.sender.call{value: _amount}("");
-             require(success);
-         }
-     }
-     ```
+- **Validação de Entradas:** Sempre valide as entradas do usuário para evitar erros e vulnerabilidades.
+- **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso.
+- **Emissão de Eventos:** Emita eventos para registrar ações importantes e facilitar a auditoria.
+- **Reutilização de Código:** Utilize herança e bibliotecas para evitar duplicação de código.
+
+## Exemplos Práticos
+
+- **Contrato de Armazenamento Simples:** Um exemplo de contrato que armazena e recupera um valor inteiro.
+
+  ```solidity
+  contract Armazenamento {
+      uint256 private valor;
+
+      function armazenar(uint256 novoValor) public {
+          valor = novoValor;
+      }
+
+      function recuperar() public view returns (uint256) {
+          return valor;
+      }
+  }
+  ```
