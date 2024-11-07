@@ -76,3 +76,89 @@ Para garantir que o contrato seja seguro e eficiente, siga estas boas práticas 
       }
   }
   ```
+
+# Ataques de Reentrância
+
+Nesta aula, vamos explorar os ataques de reentrância, um dos tipos mais comuns de vulnerabilidades em contratos inteligentes. Vamos entender como esses ataques funcionam, analisar exemplos práticos e discutir métodos eficazes de prevenção.
+
+## Como Funcionam os Ataques de Reentrância
+
+Os ataques de reentrância ocorrem quando um contrato malicioso chama uma função de outro contrato antes que a execução anterior seja concluída. Isso permite que o atacante execute a função várias vezes, explorando o estado inconsistente do contrato para roubar fundos ou manipular dados.
+
+### Mecanismo de Reentrância
+
+1. **Chamada Externa:** O contrato vulnerável faz uma chamada externa a um contrato malicioso.
+2. **Execução Interrompida:** O contrato malicioso executa uma função que chama de volta a função original do contrato vulnerável antes que a execução anterior seja finalizada.
+3. **Estado Inconsistente:** O contrato vulnerável não atualiza seu estado antes da chamada externa, permitindo que o atacante explore o estado inconsistente.
+
+## Exemplos Práticos
+
+### Exemplo de Código Vulnerável
+
+```solidity
+contract Vulneravel {
+    mapping(address => uint256) public saldos;
+
+    function depositar() public payable {
+        saldos[msg.sender] += msg.value;
+    }
+
+    function retirar(uint256 valor) public {
+        require(saldos[msg.sender] >= valor, "Saldo insuficiente");
+        (bool sucesso, ) = msg.sender.call{value: valor}("");
+        require(sucesso, "Falha na transferência");
+        saldos[msg.sender] -= valor;
+    }
+}
+```
+
+### Exemplo de Ataque
+
+1. **Depósito:** O atacante deposita fundos no contrato vulnerável.
+2. **Retirada:** O atacante chama a função `retirar`, que faz uma chamada externa ao contrato do atacante.
+3. **Reentrância:** O contrato do atacante chama novamente a função `retirar` antes que o saldo seja atualizado, permitindo múltiplas retiradas.
+
+## Métodos de Prevenção
+
+### Atualização do Estado Antes da Chamada Externa
+
+Atualize o estado do contrato antes de fazer chamadas externas para evitar que o estado seja explorado.
+
+```solidity
+function retirar(uint256 valor) public {
+    require(saldos[msg.sender] >= valor, "Saldo insuficiente");
+    saldos[msg.sender] -= valor;
+    (bool sucesso, ) = msg.sender.call{value: valor}("");
+    require(sucesso, "Falha na transferência");
+}
+```
+
+### Uso de Mutexes
+
+Implemente um mutex para bloquear reentrância, garantindo que a função não possa ser chamada novamente até que a execução anterior seja concluída.
+
+```solidity
+bool private bloqueado;
+
+modifier semReentrancia() {
+    require(!bloqueado, "Reentrancia detectada");
+    bloqueado = true;
+    _;
+    bloqueado = false;
+}
+
+function retirar(uint256 valor) public semReentrancia {
+    require(saldos[msg.sender] >= valor, "Saldo insuficiente");
+    saldos[msg.sender] -= valor;
+    (bool sucesso, ) = msg.sender.call{value: valor}("");
+    require(sucesso, "Falha na transferência");
+}
+```
+
+### Uso de Bibliotecas Confiáveis
+
+Utilize bibliotecas como OpenZeppelin, que implementam padrões de segurança para prevenir reentrância e outras vulnerabilidades comuns.
+
+## Conclusão
+
+Os ataques de reentrância são uma ameaça significativa à segurança dos contratos inteligentes, mas podem ser prevenidos com práticas de codificação seguras e o uso de padrões de segurança estabelecidos. Ao entender como esses ataques funcionam e implementar métodos eficazes de prevenção, os desenvolvedores podem proteger seus contratos contra explorações e garantir a segurança dos ativos dos usuários.

@@ -107,3 +107,71 @@ Para garantir que o uso de bibliotecas e importações seja eficiente e seguro, 
       }
   }
   ```
+
+# Problemas de Proxy e Inicialização Indevida
+
+Nesta aula, vamos explorar as vulnerabilidades associadas a contratos inicializáveis e os riscos de problemas de proxy, destacando como essas questões podem comprometer a segurança dos contratos inteligentes.
+
+## Vulnerabilidades em Contratos Inicializáveis
+
+Contratos inicializáveis são aqueles que permitem a configuração de variáveis de estado após a implantação. Embora essa flexibilidade seja útil, ela também introduz riscos significativos se não for gerenciada corretamente.
+
+### Principais Vulnerabilidades
+
+- **Inicialização Múltipla:** Se um contrato inicializável não for protegido adequadamente, ele pode ser inicializado mais de uma vez, permitindo que atacantes redefinam variáveis críticas.
+- **Falta de Proteção de Acesso:** Sem controles de acesso adequados, qualquer usuário pode chamar a função de inicialização, comprometendo a segurança do contrato.
+
+### Exemplo de Código Vulnerável
+
+```solidity
+contract Inicializavel {
+    bool public inicializado;
+    address public proprietario;
+
+    function inicializar(address _proprietario) public {
+        require(!inicializado, "Contrato já inicializado");
+        proprietario = _proprietario;
+        inicializado = true;
+    }
+}
+```
+
+## Riscos Associados a Proxies
+
+Contratos proxy são usados para permitir atualizações de lógica sem alterar o endereço do contrato. No entanto, eles introduzem complexidade adicional e riscos de segurança.
+
+### Problemas Comuns de Proxy
+
+- **Inicialização Indevida:** Se a lógica do contrato não for inicializada corretamente, o contrato pode ficar em um estado inconsistente.
+- **Confusão de Armazenamento:** A falta de alinhamento entre o armazenamento do proxy e o contrato de lógica pode levar a comportamentos inesperados.
+
+### Exemplo de Problema de Proxy
+
+1. **Confusão de Armazenamento:** Se o layout de armazenamento do contrato de lógica mudar sem atualizar o proxy, isso pode resultar em corrupção de dados.
+
+## Métodos de Prevenção
+
+### Proteção de Inicialização
+
+- **Uso de Modificadores:** Utilize modificadores para garantir que a função de inicialização só possa ser chamada uma vez.
+
+  ```solidity
+  modifier apenasNaoInicializado() {
+      require(!inicializado, "Contrato já inicializado");
+      _;
+  }
+
+  function inicializar(address _proprietario) public apenasNaoInicializado {
+      proprietario = _proprietario;
+      inicializado = true;
+  }
+  ```
+
+### Gerenciamento de Proxies
+
+- **Alinhamento de Armazenamento:** Certifique-se de que o layout de armazenamento do proxy e do contrato de lógica estejam alinhados.
+- **Auditorias de Segurança:** Realize auditorias regulares para garantir que a implementação do proxy esteja livre de vulnerabilidades.
+
+## Conclusão
+
+Problemas de proxy e inicialização indevida representam riscos significativos para a segurança dos contratos inteligentes. No entanto, ao implementar práticas de segurança robustas, como proteção de inicialização e gerenciamento cuidadoso de proxies, os desenvolvedores podem mitigar esses riscos e garantir a integridade e a confiabilidade de seus contratos. A implementação de auditorias regulares e a adoção de práticas de codificação seguras são essenciais para proteger contratos contra essas vulnerabilidades.

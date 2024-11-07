@@ -105,3 +105,43 @@ Para garantir que o uso de funções e modificadores seja eficiente e seguro, si
 - **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso e evitar duplicação de código.
 - **Documentação de Funções:** Documente todas as funções e modificadores para facilitar a manutenção e auditoria do contrato.
 - **Reutilização de Código:** Utilize funções e modificadores para evitar duplicação de lógica e melhorar a legibilidade do código.
+
+# Aleatoriedade e Suas Limitações na Blockchain
+
+Nesta aula, vamos explorar os desafios associados à implementação de aleatoriedade na blockchain e discutir soluções que podem ser utilizadas para superar essas limitações.
+
+## Desafios da Aleatoriedade na Blockchain
+
+A geração de números aleatórios na blockchain é um desafio devido à natureza determinística das transações e à transparência dos dados. Isso significa que qualquer tentativa de gerar aleatoriedade pode ser previsível ou manipulável.
+
+### Principais Desafios
+
+- **Determinismo:** Todas as transações na blockchain são determinísticas, o que significa que o mesmo conjunto de entradas sempre produzirá o mesmo resultado. Isso torna difícil gerar números verdadeiramente aleatórios.
+- **Transparência:** Como todas as transações e dados são públicos, qualquer método de geração de aleatoriedade pode ser observado e potencialmente manipulado por atacantes.
+- **Manipulação de Mineradores:** Mineradores podem influenciar a geração de números aleatórios ao escolher quais transações incluir em um bloco ou ao manipular o timestamp do bloco.
+
+## Soluções para Implementar Aleatoriedade
+
+Apesar dos desafios, existem várias abordagens que podem ser utilizadas para implementar aleatoriedade na blockchain de forma segura e eficaz.
+
+### Oráculos de Aleatoriedade
+
+- **Chainlink VRF (Verifiable Random Function):** Um serviço que fornece números aleatórios verificáveis para contratos inteligentes. O Chainlink VRF gera números aleatórios fora da cadeia e os verifica na cadeia, garantindo que sejam imprevisíveis e não manipuláveis.
+  - **Funcionalidades:** Gera números aleatórios que podem ser verificados por qualquer parte interessada.
+  - **Uso Comum:** Utilizado em jogos e loterias baseados em blockchain para garantir resultados justos.
+
+### Algoritmos de Compromisso
+
+- **Commit-Reveal:** Um método em que os participantes comprometem-se a um valor secreto e, posteriormente, revelam esse valor. A combinação dos valores revelados é usada para gerar um número aleatório.
+  - **Funcionalidades:** Reduz a possibilidade de manipulação, pois os valores são comprometidos antes de serem revelados.
+  - **Uso Comum:** Utilizado em sorteios e leilões para garantir que os resultados sejam justos e imprevisíveis.
+
+### Mistura de Fontes de Entropia
+
+- **Combinação de Fontes Internas e Externas:** Misturar fontes de entropia internas (como o hash do bloco) com fontes externas (como dados de oráculos) para gerar números aleatórios.
+  - **Funcionalidades:** Aumenta a imprevisibilidade ao combinar múltiplas fontes de entropia.
+  - **Uso Comum:** Utilizado em aplicações que requerem alta segurança e imprevisibilidade.
+
+## Considerações Finais
+
+A implementação de aleatoriedade na blockchain é um desafio devido à sua natureza determinística e transparente. No entanto, ao utilizar soluções como oráculos de aleatoriedade, algoritmos de compromisso e mistura de fontes de entropia, os desenvolvedores podem gerar números aleatórios de forma segura e eficaz. A escolha da abordagem correta depende das necessidades específicas do projeto e dos requisitos de segurança.

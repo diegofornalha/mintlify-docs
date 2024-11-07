@@ -55,3 +55,52 @@ Para garantir que o contrato seja seguro e eficiente, siga estas boas práticas 
 - **Uso de Bibliotecas Seguras:** Utilize bibliotecas bem estabelecidas para realizar operações críticas.
 - **Documentação de Código:** Mantenha o código bem documentado para facilitar a revisão e a manutenção.
 - **Atualizações Regulares:** Realize atualizações regulares para corrigir vulnerabilidades e melhorar a segurança.
+
+# Ataques de Front-Running
+
+Nesta aula, vamos explorar os ataques de front-running, uma prática onde atacantes exploram a ordem das transações na blockchain para obter vantagens financeiras. Vamos entender como esses ataques funcionam e discutir métodos eficazes de mitigação.
+
+## Como Funcionam os Ataques de Front-Running
+
+Front-running ocorre quando um atacante observa uma transação pendente na mempool (a área onde as transações aguardam para serem incluídas em um bloco) e envia uma transação própria com uma taxa de gas mais alta para que sua transação seja processada antes da transação original.
+
+### Mecanismo de Front-Running
+
+1. **Observação da Mempool:** O atacante monitora a mempool para identificar transações que podem ser exploradas.
+2. **Envio de Transação com Alta Taxa de Gas:** O atacante envia uma transação com uma taxa de gas mais alta para garantir que sua transação seja incluída no bloco antes da transação alvo.
+3. **Execução da Transação:** A transação do atacante é executada antes da transação original, permitindo que o atacante obtenha uma vantagem financeira.
+
+## Exemplos Práticos
+
+### Exemplo de Front-Running em Trocas Descentralizadas
+
+1. **Compra de Token:** Um usuário envia uma transação para comprar um token em uma troca descentralizada.
+2. **Front-Running:** Um atacante observa a transação e envia uma transação própria para comprar o mesmo token com uma taxa de gas mais alta.
+3. **Impacto:** O preço do token aumenta devido à compra do atacante, e a transação original é executada a um preço menos favorável.
+
+## Métodos de Mitigação
+
+### Uso de Transações Privadas
+
+- **Transações Privadas:** Utilize serviços que permitem enviar transações diretamente para mineradores, evitando a exposição na mempool pública.
+  - **Exemplo:** Flashbots é um serviço que permite enviar transações privadas para mineradores, reduzindo o risco de front-running.
+
+### Implementação de Slippage Tolerância
+
+- **Slippage Tolerância:** Defina uma tolerância de slippage ao realizar transações em trocas descentralizadas para limitar o impacto de mudanças de preço.
+  - **Exemplo:** Configurar uma tolerância de slippage de 1% para garantir que a transação só seja executada se o preço não variar mais do que 1%.
+
+### Uso de Commit-Reveal Schemes
+
+- **Commit-Reveal:** Utilize esquemas de commit-reveal para ocultar detalhes críticos de uma transação até que ela seja confirmada.
+  - **Exemplo:** Em leilões, os lances podem ser comprometidos primeiro e revelados posteriormente para evitar front-running.
+
+## Boas Práticas de Mitigação
+
+- **Monitoramento Contínuo:** Implemente soluções de monitoramento para detectar e responder rapidamente a tentativas de front-running.
+- **Educação do Usuário:** Eduque os usuários sobre os riscos de front-running e as práticas recomendadas para proteger suas transações.
+- **Auditorias de Segurança:** Realize auditorias regulares para garantir que as medidas de mitigação de front-running estejam implementadas corretamente.
+
+## Conclusão
+
+Os ataques de front-running representam um desafio significativo para a segurança e a integridade das transações na blockchain. No entanto, ao implementar métodos de mitigação eficazes, como transações privadas, slippage tolerância e commit-reveal schemes, os desenvolvedores e usuários podem proteger suas transações contra explorações. A conscientização contínua e a implementação de práticas de segurança robustas são essenciais para mitigar os riscos associados ao front-running.
