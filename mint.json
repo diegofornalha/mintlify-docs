@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Kit Inicial",
   "description": "Este é o kit inicial para criar documentação incrível com Mintlify.",
   "logo": {
     "dark": "/logo/dark.svg",
@@ -18,13 +18,13 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
+      "name": "Suporte",
       "url": "mailto:hi@mintlify.com",
       "description": "Entre em contato com nossa equipe de suporte para assistência."
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
+    "name": "Painel",
     "url": "https://dashboard.mintlify.com",
     "description": "Acesse o painel para gerenciar suas configurações e implantações."
   },
@@ -35,19 +35,19 @@
       "description": "Consulte a documentação completa sobre auditoria em contratos Solidity."
     },
     {
-      "name": "New Tab",
+      "name": "Nova Aba",
       "url": "new-tab-url",
       "description": "Descrição da nova aba que você adicionou."
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Introdução",
       "pages": ["introduction", "quickstart", "development"],
       "description": "Comece a usar o Mintlify com estas páginas introdutórias."
     },
     {
-      "group": "Essentials",
+      "group": "Essenciais",
       "pages": [
         "essentials/markdown",
         "essentials/code",
@@ -59,12 +59,12 @@
       "description": "Essenciais para criar e personalizar sua documentação."
     },
     {
-      "group": "API Documentation",
+      "group": "Documentação da API",
       "pages": ["api-reference/introduction"],
       "description": "Documentação detalhada da API para desenvolvedores."
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Exemplos de Endpoints",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
