@@ -1,0 +1,17 @@
+# Testes de Gas com Hardhat e Truffle
+
+No desenvolvimento de smart contracts para a blockchain Ethereum, um dos aspectos mais críticos e frequentemente subestimados é o gerenciamento eficiente do consumo de gas. O gas representa não apenas um custo financeiro real para os usuários, mas também um indicador crucial da eficiência e otimização do seu código. Nesta aula, vamos mergulhar profundamente na arte de testar e otimizar o consumo de gas utilizando duas das ferramentas mais poderosas do ecossistema Ethereum: Hardhat e Truffle.
+
+O gas na Ethereum funciona como um mecanismo de precificação que determina quanto os usuários devem pagar para executar operações na blockchain. Cada instrução em um smart contract consome uma quantidade específica de gas, e compreender esses custos é fundamental para desenvolver contratos economicamente viáveis. Um contrato mal otimizado pode tornar-se proibitivamente caro para usar, efetivamente inviabilizando sua adoção.
+
+O Hardhat, com seu ambiente de desenvolvimento robusto e flexível, oferece recursos avançados para análise de gas. Através de seu sistema de plugins, podemos utilizar o hardhat-gas-reporter para gerar relatórios detalhados sobre o consumo de gas de cada função em nossos contratos. Estes relatórios não apenas mostram o custo atual, mas também podem comparar os custos entre diferentes implementações, permitindo identificar gargalos e oportunidades de otimização.
+
+Por outro lado, o Truffle complementa essas capacidades com suas próprias ferramentas de análise de gas. O Truffle Test fornece hooks específicos para monitorar o consumo de gas durante a execução dos testes, permitindo estabelecer limites máximos aceitáveis e alertar quando esses limites são excedidos. Esta funcionalidade é particularmente útil em pipelines de CI/CD, onde podemos automaticamente rejeitar alterações que aumentem significativamente o consumo de gas.
+
+A otimização do consumo de gas vai além de simplesmente medir números - é uma arte que envolve compreender profundamente como o EVM (Ethereum Virtual Machine) funciona. Padrões como minimizar o uso de storage (que é mais caro que memory), evitar loops desnecessários, e utilizar tipos de dados apropriados podem resultar em economias significativas. Por exemplo, usar uint8 em vez de uint256 nem sempre resulta em economia de gas, devido à forma como o EVM padroniza operações.
+
+Ao longo desta aula, exploraremos casos práticos de otimização, demonstrando como pequenas mudanças no código podem ter impactos significativos no consumo de gas. Veremos como diferentes estruturas de dados e padrões de design afetam o custo de execução, e como podemos fazer escolhas informadas baseadas em métricas reais.
+
+Também abordaremos a importância de testar o consumo de gas em diferentes redes (mainnet, testnets, redes privadas), já que o comportamento e os custos podem variar significativamente. O Hardhat e o Truffle oferecem configurações flexíveis para simular diferentes ambientes de rede, permitindo uma avaliação abrangente do desempenho do contrato em várias condições.
+
+Por fim, discutiremos estratégias avançadas de otimização, como o uso de assembly inline para operações críticas, técnicas de batching para reduzir o número de transações necessárias, e padrões de upgrade que permitem melhorar a eficiência do contrato ao longo do tempo sem comprometer a segurança ou a funcionalidade.
