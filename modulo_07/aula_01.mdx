@@ -1,28 +1,55 @@
 # Escolha de Contrato para Auditoria
 
-Nesta aula, vamos aprender a selecionar contratos e definir o escopo de auditoria para garantir uma análise eficaz.
+Nesta aula, vamos explorar como selecionar contratos inteligentes para auditoria e definir o escopo da auditoria. A escolha adequada do contrato e a definição clara do escopo são cruciais para garantir uma auditoria eficaz e abrangente.
+
+## Importância da Escolha de Contrato para Auditoria
+
+Selecionar o contrato certo para auditoria é essencial para garantir que os recursos sejam alocados de forma eficaz e que as vulnerabilidades críticas sejam identificadas e corrigidas. Isso ajuda a:
+
+- **Priorizar Recursos:** Focar em contratos que apresentam maior risco ou complexidade.
+- **Garantir a Segurança:** Identificar e corrigir vulnerabilidades antes do deployment.
+- **Aumentar a Confiança:** Demonstrar um compromisso com a segurança e a integridade do contrato.
 
 ## Critérios para Seleção de Contratos
 
-A escolha do contrato a ser auditado é um passo crucial no processo de auditoria. Os critérios incluem:
+### Complexidade do Contrato
 
-- **Complexidade do Contrato:** Contratos mais complexos podem ter mais pontos de falha, mas também podem ser mais críticos para a segurança do sistema.
-- **Valor dos Ativos Envolvidos:** Contratos que gerenciam grandes quantidades de ativos ou dados sensíveis devem ser priorizados para auditoria.
-- **Histórico de Explorações:** Contratos que já foram explorados ou que possuem vulnerabilidades conhecidas devem ser revisados com urgência.
-- **Impacto no Sistema:** Avalie o impacto potencial de uma falha no contrato sobre o sistema como um todo.
+- **Descrição:** Avalie a complexidade do contrato, incluindo o número de linhas de código, funções e interações com outros contratos.
+- **Exemplo:** Contratos com lógica complexa ou muitas dependências externas podem exigir uma auditoria mais detalhada.
+
+### Valor em Risco
+
+- **Descrição:** Considere o valor em risco associado ao contrato, incluindo ativos financeiros e dados sensíveis.
+- **Exemplo:** Contratos que gerenciam grandes somas de dinheiro ou dados críticos devem ser priorizados para auditoria.
+
+### Histórico de Alterações
+
+- **Descrição:** Revise o histórico de alterações do contrato para identificar mudanças recentes que possam introduzir vulnerabilidades.
+- **Exemplo:** Contratos que passaram por atualizações significativas recentemente podem precisar de uma auditoria para garantir que as mudanças não introduziram novos riscos.
 
 ## Definição do Escopo de Auditoria
 
-Definir o escopo da auditoria é essencial para garantir que todos os aspectos críticos do contrato sejam revisados. Isso inclui:
+### Identificação de Áreas Críticas
 
-- **Objetivos da Auditoria:** Estabeleça o que a auditoria deve alcançar, como identificar vulnerabilidades ou garantir conformidade com padrões de segurança.
-- **Componentes a Serem Revisados:** Determine quais partes do contrato ou quais funcionalidades específicas serão auditadas.
-- **Limitações e Restrições:** Identifique quaisquer limitações, como tempo ou recursos, que possam afetar a auditoria.
+- **Descrição:** Identifique as áreas críticas do contrato que devem ser o foco da auditoria, como funções de transferência de fundos ou lógica de governança.
+- **Exemplo:** Priorize a auditoria de funções que lidam com transferências de ativos ou que têm permissões administrativas.
 
-## Planejamento de Auditoria
+### Estabelecimento de Objetivos
 
-Um planejamento eficaz é fundamental para uma auditoria bem-sucedida. Considere os seguintes passos:
+- **Descrição:** Defina objetivos claros para a auditoria, incluindo a identificação de vulnerabilidades específicas e a verificação de conformidade com padrões de segurança.
+- **Exemplo:** Objetivos podem incluir a identificação de vulnerabilidades de reentrância ou a verificação de conformidade com o padrão ERC-20.
 
-- **Cronograma de Auditoria:** Estabeleça um cronograma detalhado que inclua todas as etapas da auditoria, desde a preparação até a revisão final.
-- **Alocação de Recursos:** Determine quais recursos, como ferramentas e pessoal, serão necessários para a auditoria.
-- **Comunicação com a Equipe de Desenvolvimento:** Mantenha uma comunicação aberta com a equipe de desenvolvimento para esclarecer dúvidas e garantir que todas as áreas de preocupação sejam abordadas.
+### Planejamento de Recursos
+
+- **Descrição:** Planeje os recursos necessários para a auditoria, incluindo tempo, equipe e ferramentas.
+- **Exemplo:** Determine o número de auditores necessários e as ferramentas de análise que serão utilizadas.
+
+## Boas Práticas de Seleção e Definição de Escopo
+
+- **Colaboração com Stakeholders:** Envolva stakeholders relevantes na seleção de contratos e definição do escopo para garantir que todas as preocupações sejam abordadas.
+- **Documentação Detalhada:** Documente o processo de seleção e definição de escopo para referência futura e para garantir a transparência.
+- **Revisão Contínua:** Revise regularmente o escopo da auditoria para garantir que ele permaneça relevante e abrangente.
+
+## Conclusão
+
+A escolha de contrato para auditoria e a definição do escopo são etapas essenciais para garantir uma auditoria eficaz e abrangente. Ao selecionar contratos com base em critérios claros e definir um escopo detalhado, os desenvolvedores e auditores podem identificar e corrigir vulnerabilidades de forma eficaz, aumentando a segurança e a confiança nos contratos inteligentes. A implementação de práticas de seleção e definição de escopo eficazes é fundamental para garantir a segurança contínua dos contratos inteligentes.
