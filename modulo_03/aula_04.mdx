@@ -1,0 +1,48 @@
+4.  **Overflow e Underflow**
+
+    - **Descrição Detalhada**: Overflow e underflow são problemas que ocorrem em operações matemáticas quando os valores excedem os limites de armazenamento de uma variável. Em contratos inteligentes, isso pode levar a comportamentos inesperados e vulnerabilidades de segurança. Por exemplo, um overflow acontece quando um valor é incrementado além do limite máximo, resultando em um valor incorreto. Um underflow ocorre quando um valor é decrementado além do limite mínimo, também resultando em um valor incorreto. Esses problemas são críticos em contratos inteligentes porque podem ser explorados por atacantes para manipular o comportamento do contrato.
+
+    - **Exemplos Práticos**:
+
+      - **Overflow**: Considere uma variável `uint8` com valor 255. Se tentarmos incrementar esse valor, ele resultará em 0 devido ao overflow. Isso ocorre porque o tipo `uint8` só pode armazenar valores de 0 a 255. Ao adicionar 1 a 255, o valor "transborda" e volta para 0.
+
+      - **Underflow**: Da mesma forma, se uma variável `uint8` com valor 0 for decrementada, ela resultará em 255 devido ao underflow. Isso acontece porque, ao subtrair 1 de 0, o valor "subflui" para o valor máximo que o tipo pode armazenar, que é 255.
+
+      - **Caso Famoso**: O ataque DAO é um exemplo notório onde vulnerabilidades de overflow e underflow foram exploradas, resultando em perdas significativas. Neste caso, os atacantes conseguiram manipular o contrato para desviar fundos devido a falhas na verificação de limites em operações matemáticas.
+
+    - **Métodos de Prevenção**: Para prevenir overflow e underflow, é essencial adotar práticas seguras de programação. Uma técnica comum é o uso de bibliotecas de segurança como SafeMath, que fornecem funções matemáticas seguras que verificam automaticamente overflow e underflow. Além disso, a validação manual dos valores antes de realizar operações matemáticas pode ajudar a evitar esses problemas. Por exemplo, antes de incrementar uma variável, verifique se o valor atual está próximo do limite máximo.
+
+    - **Ferramentas e Recursos**: Existem várias ferramentas que podem ajudar na detecção e mitigação de vulnerabilidades de overflow e underflow. Ferramentas como Mythril e Slither são amplamente utilizadas para analisar contratos inteligentes e identificar possíveis vulnerabilidades. Elas oferecem análises estáticas que podem detectar automaticamente problemas de overflow e underflow em seu código.
+
+    - **Exercícios Práticos**:
+
+      - **Exercício 1**: Implemente um contrato inteligente que realiza operações matemáticas básicas. Use a biblioteca SafeMath para prevenir overflow e underflow. Por exemplo, crie um contrato que permita incrementar e decrementar um valor, garantindo que não ocorram overflow ou underflow.
+
+      - **Exercício 2**: Modifique o contrato para remover SafeMath e observe como as vulnerabilidades podem ser exploradas. Tente realizar operações que causem overflow e underflow e documente os resultados.
+
+      - **Exemplo de Código**:
+
+        ```solidity
+        pragma solidity ^0.8.0;
+
+        import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
+        contract ExemploOverflowUnderflow {
+            using SafeMath for uint8;
+            uint8 public valor;
+
+            constructor() {
+                valor = 255;
+            }
+
+            function incrementar() public {
+                valor = valor.add(1); // SafeMath previne overflow
+            }
+
+            function decrementar() public {
+                valor = valor.sub(1); // SafeMath previne underflow
+            }
+        }
+        ```
+
+        Teste o contrato acima e observe como o uso de SafeMath previne problemas de overflow e underflow. Em seguida, remova o SafeMath e veja como o comportamento do contrato muda, permitindo que overflow e underflow ocorram.

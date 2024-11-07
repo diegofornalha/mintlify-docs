@@ -1,0 +1,49 @@
+10. **Vulnerabilidades Emergentes e Como Identificá-las**
+
+    - **Descrição Detalhada**: Vulnerabilidades emergentes são falhas de segurança que surgem à medida que novas tecnologias e práticas são adotadas. Elas representam uma ameaça significativa porque muitas vezes não são bem compreendidas ou documentadas, tornando difícil a sua identificação e mitigação. Com o avanço constante da tecnologia, novas superfícies de ataque são criadas, exigindo atenção contínua dos desenvolvedores de contratos inteligentes.
+
+    - **Riscos e Vulnerabilidades**: As vulnerabilidades emergentes podem incluir desde novas técnicas de ataque, como exploração de falhas em protocolos de consenso, até falhas em implementações de novas funcionalidades de contratos inteligentes. Por exemplo, a introdução de novos padrões de token pode trazer riscos não previstos, como a manipulação de eventos ou a exploração de funções mal implementadas.
+
+    - **Exemplos Práticos**:
+
+      - _Exemplo Real_: Um caso recente envolveu a exploração de uma vulnerabilidade em um novo padrão de token que permitia a duplicação de tokens através de uma falha na função de transferência.
+      - _Exemplo de Código_:
+
+        ```solidity
+        // Exemplo de contrato com vulnerabilidade emergente
+        contract TokenVulneravel {
+            mapping(address => uint256) public balances;
+
+            function transfer(address to, uint256 amount) public {
+                require(balances[msg.sender] >= amount, "Saldo insuficiente");
+                balances[to] += amount; // Falta de verificação de overflow
+                balances[msg.sender] -= amount;
+            }
+        }
+        ```
+
+    - **Métodos de Prevenção**: Para prevenir vulnerabilidades emergentes, é crucial adotar práticas de segurança robustas, como auditorias de segurança contínuas, testes rigorosos e a implementação de atualizações regulares. Além disso, manter-se atualizado com as últimas pesquisas e desenvolvimentos na área de segurança de blockchain é essencial.
+
+    - **Ferramentas e Recursos**: Ferramentas como MythX e Slither podem ser usadas para análise estática de contratos inteligentes, ajudando a identificar vulnerabilidades emergentes. Além disso, participar de comunidades de desenvolvedores e fóruns de segurança pode fornecer insights valiosos sobre novas ameaças e soluções.
+
+    - **Exercícios Práticos**:
+
+      - _Exercício 1_: Implemente um contrato inteligente que simule uma vulnerabilidade emergente e desenvolva uma solução para mitigá-la.
+      - _Exemplo de Código_:
+
+        ````solidity
+        // Exemplo de contrato com mitigação de vulnerabilidade emergente
+        contract TokenSeguro {
+        mapping(address => uint256) public balances;
+
+                function transfer(address to, uint256 amount) public {
+                    require(balances[msg.sender] >= amount, "Saldo insuficiente");
+                    require(balances[to] + amount >= balances[to], "Overflow detectado"); // Verificação de overflow
+                    balances[to] += amount;
+                    balances[msg.sender] -= amount;
+                }
+            }
+            ```
+
+        Teste o contrato para garantir que a vulnerabilidade foi mitigada e que o sistema é seguro contra ataques conhecidos.
+        ````

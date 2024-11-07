@@ -49,6 +49,36 @@
         "modulo_01/aula_09",
         "modulo_01/aula_10"
       ]
+    },
+    {
+      "group": "Módulo 02",
+      "pages": [
+        "modulo_02/aula_01",
+        "modulo_02/aula_02",
+        "modulo_02/aula_03",
+        "modulo_02/aula_04",
+        "modulo_02/aula_05",
+        "modulo_02/aula_06",
+        "modulo_02/aula_07",
+        "modulo_02/aula_08",
+        "modulo_02/aula_09",
+        "modulo_02/aula_10"
+      ]
+    },
+    {
+      "group": "Módulo 03",
+      "pages": [
+        "modulo_03/aula_01",
+        "modulo_03/aula_02",
+        "modulo_03/aula_03",
+        "modulo_03/aula_04",
+        "modulo_03/aula_05",
+        "modulo_03/aula_06",
+        "modulo_03/aula_07",
+        "modulo_03/aula_08",
+        "modulo_03/aula_09",
+        "modulo_03/aula_10"
+      ]
     }
   ],
   "footerSocials": {

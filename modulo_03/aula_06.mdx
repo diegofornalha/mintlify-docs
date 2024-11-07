@@ -1,0 +1,37 @@
+6. **Problemas de Proxy e Inicialização Indevida**
+
+   - **Descrição Detalhada**: Os problemas de proxy e inicialização indevida são questões críticas em contratos inteligentes que podem comprometer a segurança e a funcionalidade do sistema. Proxies são usados para permitir a atualização de contratos inteligentes sem alterar o endereço do contrato, mas se não forem implementados corretamente, podem levar a falhas de segurança. A inicialização indevida ocorre quando um contrato não é configurado corretamente, permitindo que atacantes assumam o controle ou causem comportamentos inesperados.
+
+   - **Riscos e Vulnerabilidades**: As vulnerabilidades associadas a proxies incluem a possibilidade de ataques de reentrância, onde um atacante pode explorar a lógica do contrato para executar funções repetidamente antes que o estado seja atualizado. Além disso, a inicialização indevida pode permitir que um atacante configure o contrato de forma maliciosa. Um exemplo clássico é quando um contrato proxy não verifica se já foi inicializado, permitindo que qualquer pessoa o inicialize novamente com parâmetros maliciosos.
+
+   - **Exemplos Práticos**:
+
+     - _Exemplo de Proxy_: Considere um contrato proxy que não verifica corretamente a inicialização. Um atacante pode chamar a função de inicialização e redefinir o administrador do contrato, assumindo o controle total.
+     - _Exemplo de Inicialização Indevida_: Um contrato que não verifica se já foi inicializado pode ser configurado por um atacante para alterar o endereço do destinatário dos fundos.
+
+   - **Métodos de Prevenção**: Para prevenir esses problemas, é essencial seguir práticas de design seguras, como o uso de padrões de proxy bem estabelecidos, como o padrão de proxy transparente. Além disso, sempre verifique o estado de inicialização do contrato antes de permitir qualquer configuração. Implementar verificações de estado e usar bibliotecas de segurança pode ajudar a mitigar esses riscos.
+
+   - **Ferramentas e Recursos**: Ferramentas como OpenZeppelin oferecem contratos de proxy seguros que podem ser usados para evitar problemas comuns. Além disso, ferramentas de análise estática como MythX podem ajudar a identificar vulnerabilidades em contratos inteligentes relacionados a proxies e inicialização.
+
+   - **Exercícios Práticos**:
+
+     - _Exercício 1_: Implemente um contrato proxy seguro usando a biblioteca OpenZeppelin e teste-o para garantir que não possa ser inicializado indevidamente.
+     - _Exemplo de Código_:
+
+       ```solidity
+       pragma solidity ^0.8.0;
+       import "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
+
+       contract MeuContrato {
+           address public owner;
+           bool public initialized;
+
+           function initialize(address _owner) public {
+               require(!initialized, "Já inicializado");
+               owner = _owner;
+               initialized = true;
+           }
+       }
+       ```
+
+     - _Exercício 2_: Modifique o contrato acima para adicionar uma função que só pode ser chamada pelo proprietário e teste se a inicialização indevida é possível.

@@ -1,0 +1,33 @@
+2. **Manipulação de Oráculos e Riscos de Preço**
+
+   - **Descrição Detalhada**: Oráculos são componentes críticos em contratos inteligentes, pois fornecem dados externos que permitem a interação com o mundo real. Eles podem ser de diferentes tipos, como oráculos de software, hardware, de entrada e de saída. Por exemplo, um oráculo de software pode fornecer dados de preços de criptomoedas, enquanto um oráculo de hardware pode ser usado para verificar a temperatura de um ambiente. Esses dados são essenciais para a execução de ações baseadas em eventos externos, como um contrato de seguro que é acionado por dados meteorológicos fornecidos por um oráculo.
+
+   - **Riscos e Vulnerabilidades**: A utilização de oráculos traz riscos significativos, principalmente devido à possibilidade de manipulação de dados. Dados incorretos ou maliciosos podem ser injetados no contrato, comprometendo sua integridade. Um exemplo clássico é o ataque de Sybil, onde um invasor cria múltiplas identidades para influenciar o consenso de dados. Por exemplo, um atacante pode manipular o preço de um ativo fornecido por um oráculo para obter vantagem em um contrato financeiro, resultando em perdas financeiras.
+
+   - **Exemplos Práticos**: Um caso real de manipulação de oráculos ocorreu quando um oráculo de preço foi alterado para modificar o valor de um ativo em um contrato de empréstimo, causando perdas significativas. Outro exemplo teórico seria um atacante usando um oráculo de clima para falsificar dados meteorológicos, acionando um pagamento de seguro indevido. Esses exemplos ilustram a importância de garantir a integridade dos dados fornecidos por oráculos.
+
+   - **Soluções Descentralizadas**: Para mitigar os riscos associados aos oráculos, é crucial adotar soluções descentralizadas. Utilizar múltiplas fontes de dados pode reduzir a dependência de um único ponto de falha. Mecanismos de consenso, como a agregação de dados de várias fontes e a validação por meio de contratos inteligentes, são eficazes. Por exemplo, a Chainlink é uma rede descentralizada de oráculos que utiliza múltiplas fontes de dados para garantir a precisão e a segurança, minimizando o risco de manipulação.
+
+   - **Ferramentas e Recursos**: Existem diversas ferramentas e recursos que auxiliam na detecção e mitigação de vulnerabilidades relacionadas a oráculos. Plataformas como a Provable e a Band Protocol oferecem soluções robustas para a integração de oráculos em contratos inteligentes, garantindo maior segurança e confiabilidade. Essas ferramentas ajudam a validar e verificar a autenticidade dos dados fornecidos.
+
+   - **Exercícios Práticos**: Para consolidar seu conhecimento, implemente um contrato inteligente que utilize um oráculo para obter dados de preços de criptomoedas. Aqui está um exemplo de código em Solidity:
+
+     ```solidity
+     pragma solidity ^0.8.0;
+
+     contract PriceConsumer {
+         uint256 public price;
+
+         function updatePrice(uint256 _price) external {
+             // Simulação de recebimento de dados de um oráculo
+             price = _price;
+         }
+
+         function validatePrice(uint256 _price) internal view returns (bool) {
+             // Implementação de um mecanismo de validação de dados
+             return _price > 0;
+         }
+     }
+     ```
+
+     Simule um cenário onde o oráculo fornece dados incorretos e desenvolva uma solução para mitigar esse risco, como a implementação de um mecanismo de validação de dados. Teste o contrato com diferentes valores de preço para garantir que apenas dados válidos sejam aceitos.

@@ -1,0 +1,91 @@
+1. **Ataques de Reentrância**
+
+   - **Descrição Detalhada**: Ataques de reentrância são uma técnica maliciosa utilizada em contratos inteligentes, onde um contrato atacante faz chamadas repetidas a um contrato alvo antes que o estado deste seja devidamente atualizado. Isso pode resultar em saques indevidos de fundos ou manipulações indesejadas. Por exemplo, em um contrato de saque, se o saldo do usuário não for atualizado antes de permitir novas retiradas, um atacante pode explorar essa falha para sacar mais do que o permitido.
+
+   - **Exemplos Práticos**:
+
+     - _Exemplo 1_: Considere um contrato de doação que permite retiradas. Um atacante pode explorar o contrato chamando repetidamente a função de retirada antes que o saldo do doador seja atualizado, resultando em saques excessivos.
+
+     ```solidity
+     function withdraw(uint _amount) public {
+         require(balances[msg.sender] >= _amount);
+         (bool success, ) = msg.sender.call{value: _amount}("");
+         require(success);
+         balances[msg.sender] -= _amount;
+     }
+     ```
+
+     - _Exemplo 2_: Em um contrato de leilão, um atacante pode fazer lances repetidos para manipular o valor final do leilão, explorando a falta de verificação de estado entre as chamadas.
+
+     ```solidity
+     function bid() public payable {
+         require(msg.value > highestBid);
+         if (highestBidder != address(0)) {
+             highestBidder.transfer(highestBid);
+         }
+         highestBidder = msg.sender;
+         highestBid = msg.value;
+     }
+     ```
+
+   - **Métodos de Prevenção**: Para prevenir ataques de reentrância, é essencial implementar padrões de design seguros, como o padrão "check-effects-interactions", que garante que todas as verificações de estado e atualizações sejam feitas antes de qualquer interação externa. Além disso, o uso de mutexes ou bloqueios pode ajudar a evitar chamadas reentrantes. Ferramentas de análise de segurança, como o MythX, podem ser usadas para identificar vulnerabilidades de reentrância em contratos inteligentes.
+
+     ```solidity
+     function withdraw(uint _amount) public {
+         require(balances[msg.sender] >= _amount);
+         balances[msg.sender] -= _amount;
+         (bool success, ) = msg.sender.call{value: _amount}("");
+         require(success);
+     }
+     ```
+
+   - **Ferramentas e Recursos**: Ferramentas como o Remix IDE e o Truffle Suite oferecem plugins e bibliotecas que ajudam a detectar e mitigar vulnerabilidades de reentrância. Recursos educacionais, como tutoriais e workshops, também são valiosos para entender e aplicar as melhores práticas de segurança.
+
+   - **Exercícios Práticos**:
+
+     - _Exercício 1_: Implemente um contrato de saque seguro que previna ataques de reentrância. Teste o contrato com diferentes cenários de ataque e verifique se ele se comporta conforme esperado.
+
+     ```solidity
+     contract SafeWithdraw {
+         mapping(address => uint) public balances;
+
+         function deposit() public payable {
+             balances[msg.sender] += msg.value;
+         }
+
+         function withdraw(uint _amount) public {
+             require(balances[msg.sender] >= _amount);
+             balances[msg.sender] -= _amount;
+             (bool success, ) = msg.sender.call{value: _amount}("");
+             require(success);
+         }
+     }
+     ```
+
+     - _Exercício 2_: Analise um contrato vulnerável a reentrância e modifique-o para corrigir a vulnerabilidade. Documente as mudanças feitas e explique por que elas são eficazes.
+     - _Exemplo de Exercício_: Crie um contrato simples que simule um banco onde usuários podem depositar e sacar fundos. Introduza uma vulnerabilidade de reentrância intencionalmente e, em seguida, corrija-a. Explique o processo de correção e como a vulnerabilidade foi explorada.
+
+     ```solidity
+     contract SimpleBank {
+         mapping(address => uint) public balances;
+
+         function deposit() public payable {
+             balances[msg.sender] += msg.value;
+         }
+
+         function withdraw(uint _amount) public {
+             require(balances[msg.sender] >= _amount);
+             (bool success, ) = msg.sender.call{value: _amount}("");
+             require(success);
+             balances[msg.sender] -= _amount; // Vulnerabilidade: atualização de saldo após a transferência
+         }
+
+         // Corrigido
+         function safeWithdraw(uint _amount) public {
+             require(balances[msg.sender] >= _amount);
+             balances[msg.sender] -= _amount;
+             (bool success, ) = msg.sender.call{value: _amount}("");
+             require(success);
+         }
+     }
+     ```

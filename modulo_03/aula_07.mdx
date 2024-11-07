@@ -1,0 +1,57 @@
+7. **Ataques de Front-Running**
+
+   - **Descrição Detalhada**: Ataques de front-running ocorrem quando um agente mal-intencionado intercepta e antecipa transações pendentes na blockchain para obter vantagem financeira. Isso é possível devido à transparência das transações pendentes, que podem ser vistas antes de serem confirmadas. Em contratos inteligentes, isso pode resultar em perdas financeiras significativas para os usuários, pois o atacante pode manipular a ordem das transações para seu benefício.
+
+   - **Riscos e Vulnerabilidades**: Os ataques de front-running exploram a ordem das transações na blockchain. Um exemplo clássico é a manipulação de preços em exchanges descentralizadas (DEXs), onde um atacante pode ver uma transação de compra de um token e enviar sua própria transação com taxas de gas mais altas para ser processada primeiro, comprando o token a um preço mais baixo e vendendo-o a um preço mais alto após a transação original ser processada.
+
+   - **Exemplos Práticos**:
+
+     - _Exemplo Real_: Em uma DEX, um usuário tenta comprar um token que está prestes a subir de preço. Um atacante observa essa transação pendente e envia uma transação com maior prioridade de gas para comprar o token primeiro, vendendo-o logo após a transação do usuário ser confirmada, obtendo lucro.
+     - _Exemplo de Código_:
+
+       ```solidity
+       // Exemplo simplificado de um contrato vulnerável a front-running
+       contract Exchange {
+           mapping(address => uint256) public balances;
+
+           function buyToken() public payable {
+               uint256 amount = msg.value * getCurrentPrice();
+               balances[msg.sender] += amount;
+           }
+
+           function getCurrentPrice() public view returns (uint256) {
+               // Retorna o preço atual do token
+               return 1; // Exemplo simplificado
+           }
+       }
+       ```
+
+   - **Métodos de Mitigação**: Para mitigar ataques de front-running, é importante implementar técnicas como ofuscação de transações, onde detalhes críticos são ocultados até que a transação seja confirmada. Outra técnica é o uso de ordens limitadas, onde a transação só é executada se certas condições de preço forem atendidas. Ajustar a prioridade de gas também pode ajudar a proteger transações sensíveis.
+
+   - **Ferramentas e Recursos**: Ferramentas como Flashbots podem ser usadas para enviar transações diretamente aos mineradores, evitando que sejam vistas publicamente antes da confirmação. Além disso, bibliotecas de segurança e auditorias de código podem ajudar a identificar e corrigir vulnerabilidades de front-running.
+
+   - **Exercícios Práticos**:
+
+     - _Exercício 1_: Implemente um contrato inteligente que simule um cenário de front-running e desenvolva uma solução para mitigar o ataque.
+     - _Exemplo de Código_:
+
+       ```solidity
+       // Exemplo de contrato com mitigação de front-running
+       contract SecureExchange {
+           mapping(address => uint256) public balances;
+
+           function buyToken(uint256 maxPrice) public payable {
+               uint256 currentPrice = getCurrentPrice();
+               require(currentPrice <= maxPrice, "Preço excede o máximo permitido");
+               uint256 amount = msg.value * currentPrice;
+               balances[msg.sender] += amount;
+           }
+
+           function getCurrentPrice() public view returns (uint256) {
+               // Retorna o preço atual do token
+               return 1; // Exemplo simplificado
+           }
+       }
+       ```
+
+     - _Exercício 2_: Teste o contrato acima em um ambiente de simulação e documente como a mitigação impede o front-running.

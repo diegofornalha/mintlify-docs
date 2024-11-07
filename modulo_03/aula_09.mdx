@@ -1,0 +1,47 @@
+8.  **Erros em Governança e Controle de Acesso**
+
+    - **Descrição Detalhada**: Erros em governança e controle de acesso referem-se a falhas na definição e implementação de regras que determinam quem pode fazer o quê dentro de um sistema de contratos inteligentes. Esses erros podem ocorrer devido a configurações incorretas de permissões, falta de auditorias ou políticas de segurança inadequadas, tornando o sistema vulnerável a ataques e manipulações.
+
+    - **Riscos e Vulnerabilidades**: As principais vulnerabilidades incluem a má gestão de permissões, onde usuários não autorizados podem acessar ou modificar funções críticas, e ataques de escalonamento de privilégios, onde um usuário mal-intencionado aumenta seus privilégios para acessar recursos restritos. Por exemplo, um contrato que não verifica corretamente as permissões pode permitir que um usuário comum execute funções administrativas.
+
+    - **Exemplos Práticos**:
+
+      - _Exemplo Real_: Um caso famoso foi o ataque ao DAO, onde um erro na governança permitiu que um atacante drenasse milhões de dólares em Ether.
+      - _Exemplo de Código_:
+
+        ```solidity
+        // Exemplo de contrato com falha de controle de acesso
+        contract Governanca {
+            address public admin;
+
+            function setAdmin(address _admin) public {
+                admin = _admin; // Falta de verificação de permissões
+            }
+        }
+        ```
+
+    - **Métodos de Prevenção**: Para prevenir esses erros, é crucial implementar políticas de segurança robustas, como a separação de funções, onde diferentes usuários têm diferentes níveis de acesso, e realizar auditorias regulares para identificar e corrigir vulnerabilidades. Além disso, o uso de bibliotecas de controle de acesso, como as oferecidas pela OpenZeppelin, pode ajudar a garantir que apenas usuários autorizados possam executar funções críticas.
+
+    - **Ferramentas e Recursos**: Ferramentas como o OpenZeppelin Access Control podem ser usadas para implementar controles de acesso seguros. Além disso, plataformas de auditoria de segurança, como a CertiK, oferecem serviços para revisar contratos inteligentes e identificar possíveis falhas de governança e controle de acesso.
+
+    - **Exercícios Práticos**:
+
+      - _Exercício 1_: Implemente um contrato inteligente que utilize o padrão de controle de acesso da OpenZeppelin para garantir que apenas o administrador possa alterar configurações críticas.
+      - _Exemplo de Código_:
+
+        ````solidity
+        // Exemplo de contrato com controle de acesso seguro
+        pragma solidity ^0.8.0;
+        import "@openzeppelin/contracts/access/Ownable.sol";
+
+            contract SecureGovernance is Ownable {
+                address public admin;
+
+                function setAdmin(address _admin) public onlyOwner {
+                    admin = _admin;
+                }
+            }
+            ```
+
+        Teste o contrato para garantir que apenas o proprietário possa alterar o administrador.
+        ````

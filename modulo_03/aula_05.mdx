@@ -1,0 +1,32 @@
+5. **Vazamento de Dados Sensíveis**
+
+   - **Descrição Detalhada**: Vazamento de dados sensíveis refere-se à exposição não autorizada de informações privadas que podem ocorrer na blockchain. Devido à natureza imutável e pública de muitas blockchains, dados armazenados incorretamente podem ser acessados por qualquer pessoa, representando uma ameaça significativa à privacidade e segurança. Por exemplo, se dados pessoais forem armazenados diretamente em uma blockchain pública sem criptografia, qualquer pessoa pode acessá-los.
+
+   - **Riscos e Vulnerabilidades**: Os principais riscos incluem a exposição de dados pessoais e financeiros, que podem ser explorados por atacantes através de engenharia social ou falhas de implementação. Um exemplo é quando chaves privadas são acidentalmente expostas em um repositório público de código, permitindo que atacantes acessem carteiras de criptomoedas.
+
+   - **Exemplos Práticos**: Um caso famoso de vazamento de dados sensíveis ocorreu quando uma empresa armazenou dados de clientes em uma blockchain pública sem criptografia, resultando na exposição de informações pessoais. Outro exemplo teórico é um contrato inteligente que registra transações financeiras sem anonimização, permitindo que observadores identifiquem padrões de gasto.
+
+   - **Métodos de Prevenção**: Para prevenir vazamentos, é essencial usar criptografia para proteger dados sensíveis, aplicar técnicas de anonimização para ocultar identidades e implementar controles de acesso rigorosos. Por exemplo, ao usar criptografia assimétrica, apenas usuários autorizados podem decifrar dados armazenados na blockchain.
+
+   - **Ferramentas e Recursos**: Ferramentas como o GnuPG para criptografia de dados e bibliotecas de anonimização podem ser úteis. Além disso, plataformas como o MetaMask oferecem recursos de segurança para proteger chaves privadas. Documentação e tutoriais sobre práticas seguras de desenvolvimento em blockchain também são recursos valiosos.
+
+   - **Exercícios Práticos**: Implemente um contrato inteligente que armazene dados de forma segura usando criptografia. Por exemplo, crie um contrato que armazene informações de usuários criptografadas e permita o acesso apenas a usuários com a chave correta. Aqui está um exemplo básico de como isso pode ser feito:
+
+     ```solidity
+     // SPDX-License-Identifier: MIT
+     pragma solidity ^0.8.0;
+
+     contract SecureDataStorage {
+         mapping(address => bytes32) private encryptedData;
+
+         function storeData(bytes32 _data) public {
+             encryptedData[msg.sender] = _data;
+         }
+
+         function retrieveData() public view returns (bytes32) {
+             return encryptedData[msg.sender];
+         }
+     }
+     ```
+
+     Neste exemplo, os dados são armazenados de forma criptografada, e apenas o usuário que os armazenou pode recuperá-los. Certifique-se de que a criptografia seja feita fora do contrato, pois Solidity não suporta operações de criptografia complexas.
