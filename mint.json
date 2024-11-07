@@ -1,7 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Kit Inicial",
-  "description": "Este é o kit inicial para criar documentação incrível com Mintlify.",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -19,32 +18,27 @@
   "topbarLinks": [
     {
       "name": "Suporte",
-      "url": "mailto:hi@mintlify.com",
-      "description": "Entre em contato com nossa equipe de suporte para assistência."
+      "url": "mailto:hi@mintlify.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Painel",
-    "url": "https://dashboard.mintlify.com",
-    "description": "Acesse o painel para gerenciar suas configurações e implantações."
+    "url": "https://dashboard.mintlify.com"
   },
   "tabs": [
     {
       "name": "Auditoria em Solidity",
-      "url": "auditoria-solidity",
-      "description": "Consulte a documentação completa sobre auditoria em contratos Solidity."
+      "url": "auditoria-solidity"
     },
     {
       "name": "Nova Aba",
-      "url": "new-tab-url",
-      "description": "Descrição da nova aba que você adicionou."
+      "url": "new-tab-url"
     }
   ],
   "navigation": [
     {
       "group": "Introdução",
-      "pages": ["introduction", "quickstart", "development"],
-      "description": "Comece a usar o Mintlify com estas páginas introdutórias."
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
       "group": "Essenciais",
@@ -55,13 +49,11 @@
         "essentials/settings",
         "essentials/navigation",
         "essentials/reusable-snippets"
-      ],
-      "description": "Essenciais para criar e personalizar sua documentação."
+      ]
     },
     {
       "group": "Documentação da API",
-      "pages": ["api-reference/introduction"],
-      "description": "Documentação detalhada da API para desenvolvedores."
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Exemplos de Endpoints",
@@ -69,8 +61,7 @@
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
         "api-reference/endpoint/delete"
-      ],
-      "description": "Exemplos de endpoints para operações comuns na API."
+      ]
     }
   ],
   "footerSocials": {
