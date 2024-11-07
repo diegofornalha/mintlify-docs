@@ -1,0 +1,44 @@
+## Revisão de Explorações Conhecidas
+
+### Casos Notórios
+
+#### The DAO
+
+- **Descrição:** Em 2016, a organização autônoma descentralizada (DAO) sofreu um ataque que resultou na perda de aproximadamente 3,6 milhões de Ether.
+- **Falha:** Vulnerabilidade de reentrância no contrato inteligente.
+- **Consequências:** Divisão da blockchain Ethereum em Ethereum (ETH) e Ethereum Classic (ETC).
+
+#### Parity Multisig
+
+- **Descrição:** Em 2017, uma falha no contrato multisig da Parity resultou no congelamento de 150 milhões de dólares em Ether.
+- **Falha:** Bug no código que permitiu que um usuário acidentalmente se tornasse o proprietário do contrato e o destruísse.
+- **Consequências:** Fundos inacessíveis e perda significativa de ativos.
+
+#### Incidente de Flash Loans no DeFi
+
+- **Descrição:** Em 2020, vários protocolos DeFi foram explorados através de ataques de flash loans, resultando em perdas milionárias.
+- **Falha:** Manipulação de preços de oráculos e execução de transações complexas em um único bloco.
+- **Consequências:** Perda de fundos e aumento da conscientização sobre a segurança em DeFi.
+
+### Lições Aprendidas de Cada Exploração
+
+- **The DAO:** Importância de evitar vulnerabilidades de reentrância e realizar auditorias de segurança rigorosas.
+- **Parity Multisig:** Necessidade de revisões de código extensivas e testes de segurança antes do deployment.
+- **Flash Loans no DeFi:** Importância de mecanismos de segurança robustos e validação de oráculos.
+
+### Importância de Testes e Validação de Código
+
+- **Testes Unitários:** Garantir que cada parte do código funcione conforme esperado.
+- **Testes de Integração:** Verificar a interação entre diferentes componentes do contrato.
+- **Testes de Segurança:** Identificar e corrigir vulnerabilidades antes do deployment.
+- **Auditorias de Código:** Revisões independentes por especialistas para garantir a segurança e a conformidade do contrato.
+
+### Padrões de Vulnerabilidades
+
+- **Reentrância:** Ataques que exploram a capacidade de um contrato chamar outro contrato antes de finalizar a execução.
+- **Overflow/Underflow:** Erros aritméticos que ocorrem quando um valor excede o limite máximo ou mínimo de um tipo de dado.
+- **Manipulação de Oráculos:** Exploração de fontes de dados externas para manipular preços ou outras informações críticas.
+
+## Conclusão
+
+A revisão de explorações conhecidas e a análise das lições aprendidas são cruciais para o desenvolvimento de contratos inteligentes seguros. Implementar testes rigorosos e auditorias de segurança pode prevenir vulnerabilidades e proteger os ativos dos usuários.
