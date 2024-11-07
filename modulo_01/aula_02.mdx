@@ -2,11 +2,15 @@
 
 ### Conceito de Imutabilidade
 
-A imutabilidade é uma característica fundamental dos contratos inteligentes em blockchain. Uma vez que o contrato é implantado na rede, ele não pode ser alterado ou modificado. Isso garante que o código executado seja exatamente o que foi originalmente escrito e acordado pelas partes envolvidas.
+A imutabilidade é uma característica fundamental dos contratos inteligentes em blockchain. Uma vez que o contrato é implantado na rede, ele não pode ser alterado ou modificado. Isso garante que o código executado seja exatamente o que foi originalmente escrito e acordado pelas partes envolvidas. A imutabilidade proporciona segurança e confiança, pois impede alterações maliciosas ou não autorizadas no contrato.
 
 ### Importância da Auditoria Completa
 
 Devido à imutabilidade, é crucial realizar uma auditoria completa e minuciosa antes do deploy do contrato. Qualquer erro ou vulnerabilidade presente no contrato não poderá ser corrigido após a implantação, o que pode levar a consequências graves, como a perda de fundos ou a exploração de falhas de segurança. Portanto, a auditoria deve garantir que o contrato esteja livre de bugs e vulnerabilidades, e que funcione conforme o esperado em todas as situações possíveis.
+
+- **Verificação de Lógica:** Assegurar que a lógica do contrato está correta e que todas as condições e fluxos de execução foram considerados.
+- **Testes de Segurança:** Realizar testes rigorosos para identificar e corrigir vulnerabilidades antes do deployment.
+- **Revisão de Código:** Revisar o código para garantir que ele siga as melhores práticas de segurança e desenvolvimento.
 
 ## Contratos de Alto Valor
 
@@ -14,9 +18,16 @@ Devido à imutabilidade, é crucial realizar uma auditoria completa e minuciosa 
 
 Contratos inteligentes frequentemente lidam com valores significativos e ativos valiosos, como criptomoedas, tokens e outros bens digitais. Isso os torna alvos atraentes para ataques maliciosos e fraudes. A segurança desses contratos é, portanto, de extrema importância para proteger os ativos envolvidos.
 
+- **Ataques de Reentrância:** Explorações que permitem que um atacante chame repetidamente uma função antes que a execução anterior seja concluída.
+- **Manipulação de Oráculos:** Risco de manipulação de dados externos que podem afetar o comportamento do contrato.
+
 ### Medidas de Segurança
 
 Para mitigar os riscos, é essencial implementar medidas de segurança robustas durante o desenvolvimento do contrato. Isso inclui a utilização de boas práticas de codificação, testes rigorosos e auditorias de segurança realizadas por especialistas. Além disso, é importante considerar a implementação de mecanismos de segurança adicionais, como multi-assinaturas e limites de retirada, para proteger os ativos em caso de comprometimento do contrato.
+
+- **Boas Práticas de Codificação:** Seguir padrões de codificação seguros e evitar práticas que possam introduzir vulnerabilidades.
+- **Auditorias Regulares:** Realizar auditorias de segurança frequentes para identificar e corrigir novas vulnerabilidades.
+- **Mecanismos de Proteção:** Implementar medidas como multi-assinaturas para aumentar a segurança dos ativos.
 
 ## Confiança do Usuário e Reputação
 
@@ -27,3 +38,6 @@ A auditoria de contratos inteligentes desempenha um papel vital na garantia da s
 ### Credibilidade do Projeto
 
 A reputação de um projeto de blockchain está intimamente ligada à segurança de seus contratos inteligentes. Projetos que realizam auditorias regulares e transparentes demonstram um compromisso com a segurança e a proteção dos usuários. Isso não só aumenta a credibilidade do projeto, mas também atrai mais investidores e usuários, contribuindo para o seu sucesso a longo prazo.
+
+- **Transparência:** Publicar relatórios de auditoria para demonstrar o compromisso com a segurança.
+- **Engajamento da Comunidade:** Envolver a comunidade no processo de auditoria para aumentar a confiança e a transparência.
