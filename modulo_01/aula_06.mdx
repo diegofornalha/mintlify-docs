@@ -1,0 +1,40 @@
+## Componentes Principais de Contratos Inteligentes
+
+### Estrutura Básica de Contratos
+
+Os contratos inteligentes são compostos por três componentes principais: variáveis, funções e modificadores. Cada um desses componentes desempenha um papel crucial na definição do comportamento e da lógica do contrato.
+
+### Variáveis e Escopo
+
+#### Variáveis de Estado vs. Variáveis Locais
+
+- **Variáveis de Estado:** São armazenadas permanentemente na blockchain e mantêm seu valor entre as chamadas de função. Exemplos incluem saldos de contas e dados de configuração.
+- **Variáveis Locais:** São temporárias e existem apenas durante a execução de uma função. Elas são usadas para cálculos intermediários e não afetam o estado global do contrato.
+
+#### Tipos de Dados
+
+- **Tipos Inteiros:** `uint`, `int` - usados para representar números inteiros.
+- **Tipos de Endereço:** `address` - usado para armazenar endereços de contas.
+- **Tipos de Dados Booleans:** `bool` - usado para representar valores verdadeiros ou falsos.
+- **Tipos de Dados de Bytes:** `bytes`, `string` - usados para armazenar dados binários e texto.
+
+#### Impacto na Segurança
+
+- **Visibilidade:** Variáveis de estado devem ser cuidadosamente gerenciadas para evitar acessos não autorizados. O uso de modificadores de visibilidade (`public`, `private`, `internal`, `external`) é essencial para proteger dados sensíveis.
+- **Inicialização:** Variáveis não inicializadas podem levar a comportamentos inesperados. Sempre inicialize variáveis de estado para valores seguros.
+- **Overflow e Underflow:** Erros aritméticos podem ocorrer se os valores excederem os limites permitidos. Utilize bibliotecas como SafeMath para prevenir esses problemas.
+
+### Funções e Modificadores
+
+#### Estruturação de Funções
+
+- **Funções Públicas:** Podem ser chamadas por qualquer pessoa. Devem ser usadas com cautela para evitar acessos indesejados.
+- **Funções Privadas:** Só podem ser chamadas de dentro do contrato. São úteis para lógica interna que não deve ser exposta.
+- **Funções Restritas:** Utilizam modificadores para limitar quem pode chamá-las. Por exemplo, apenas o proprietário do contrato pode executar certas funções.
+
+#### Uso de `require` e `assert`
+
+- **`require`:** Verifica condições e reverte a transação se a condição não for atendida. É usado para validar entradas e garantir que as pré-condições sejam satisfeitas.
+- **`assert`:** Verifica condições internas e reverte a transação se a condição não for atendida. É usado para verificar invariantes e garantir que o contrato esteja em um estado consistente.
+
+### Exemplos Práticos
