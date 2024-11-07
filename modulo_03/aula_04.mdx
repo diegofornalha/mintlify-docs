@@ -46,3 +46,68 @@
         ```
 
         Teste o contrato acima e observe como o uso de SafeMath previne problemas de overflow e underflow. Em seguida, remova o SafeMath e veja como o comportamento do contrato muda, permitindo que overflow e underflow ocorram.
+
+# Eventos e Logs em Solidity
+
+Nesta aula, vamos explorar o uso de eventos e logs em Solidity, que são fundamentais para a comunicação entre contratos inteligentes e aplicações externas.
+
+## O que são Eventos?
+
+Eventos em Solidity são mecanismos que permitem que contratos inteligentes emitam notificações que podem ser capturadas por aplicativos externos. Eles são usados para registrar ações importantes e facilitar a comunicação entre o contrato e o mundo externo.
+
+- **Declaração de Eventos:** Define eventos que podem ser emitidos durante a execução do contrato.
+
+  - **Exemplo:**
+    ```solidity
+    event Transferencia(address indexed de, address indexed para, uint256 valor);
+    ```
+
+- **Emissão de Eventos:** Emite eventos para registrar ações importantes.
+  - **Exemplo:**
+    ```solidity
+    function transferir(address para, uint256 valor) public {
+        // Lógica de transferência
+        emit Transferencia(msg.sender, para, valor);
+    }
+    ```
+
+## Importância dos Eventos
+
+Eventos são essenciais para a transparência e auditoria de contratos inteligentes. Eles permitem que aplicativos externos monitorem e respondam a ações específicas no contrato.
+
+- **Transparência:** Eventos fornecem um registro público de ações importantes, aumentando a transparência do contrato.
+- **Auditoria:** Eventos facilitam a auditoria do contrato, permitindo que auditores verifiquem o histórico de transações e ações.
+- **Interação com Aplicações Externas:** Aplicações externas podem escutar eventos para reagir a mudanças no contrato, como atualizações de saldo ou transferências de tokens.
+
+## Logs e Armazenamento de Eventos
+
+Quando um evento é emitido, ele é registrado como um log na blockchain. Logs são armazenados de forma eficiente e podem ser acessados por aplicativos externos.
+
+- **Armazenamento de Logs:** Logs são armazenados fora do estado do contrato, o que significa que eles não consomem gas para armazenamento.
+- **Acesso a Logs:** Aplicações externas podem acessar logs usando bibliotecas como Web3.js ou Ethers.js para monitorar eventos em tempo real.
+
+## Boas Práticas de Uso de Eventos
+
+Para garantir que o uso de eventos seja eficiente e seguro, siga estas boas práticas:
+
+- **Emissão de Eventos para Ações Importantes:** Emita eventos para registrar ações críticas, como transferências de tokens ou alterações de estado.
+- **Uso de Indexação:** Utilize a palavra-chave `indexed` para permitir que aplicativos externos filtrem eventos por parâmetros específicos.
+- **Documentação de Eventos:** Documente todos os eventos emitidos pelo contrato para facilitar a auditoria e a manutenção.
+
+## Exemplos Práticos
+
+- **Contrato de Token:** Um exemplo de contrato que emite eventos para registrar transferências de tokens.
+
+  ```solidity
+  contract Token {
+      mapping(address => uint256) public saldos;
+      event Transferencia(address indexed de, address indexed para, uint256 valor);
+
+      function transferir(address para, uint256 valor) public {
+          require(saldos[msg.sender] >= valor, "Saldo insuficiente");
+          saldos[msg.sender] -= valor;
+          saldos[para] += valor;
+          emit Transferencia(msg.sender, para, valor);
+      }
+  }
+  ```

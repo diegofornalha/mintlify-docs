@@ -1,47 +1,107 @@
-3. **Aleatoriedade e Suas Limitações na Blockchain**
+# Funções e Modificadores em Solidity
 
-   - **Descrição Detalhada**: A aleatoriedade na blockchain refere-se à geração de números ou eventos aleatórios que são utilizados em contratos inteligentes. Este conceito é desafiador devido à natureza determinística da blockchain, onde todas as transações e operações devem ser verificáveis e reproduzíveis. As limitações intrínsecas incluem a dificuldade em garantir que os resultados sejam verdadeiramente aleatórios e não manipuláveis por partes mal-intencionadas. Por exemplo, ao tentar gerar um número aleatório usando o hash de um bloco, um minerador pode influenciar o resultado ao escolher quais transações incluir.
+Nesta aula, vamos explorar o uso de funções e modificadores em Solidity, que são fundamentais para a organização e controle de acesso em contratos inteligentes.
 
-   - **Desafios e Vulnerabilidades**: A implementação de aleatoriedade na blockchain enfrenta desafios significativos, como a previsibilidade, onde um atacante pode prever o resultado de um processo aleatório e manipulá-lo a seu favor. Por exemplo, em jogos de azar baseados em blockchain, se a aleatoriedade não for bem implementada, um jogador pode explorar essa falha para ganhar injustamente. Outro desafio é a manipulação, onde um minerador pode influenciar o resultado de um processo aleatório ao escolher quais transações incluir em um bloco. Um exemplo disso é quando um minerador tenta manipular a seleção de validadores em um sistema de Proof of Stake.
+## Declaração de Funções
 
-   - **Exemplos Práticos**: Um exemplo prático de uso de aleatoriedade na blockchain é a seleção de validadores em redes de Proof of Stake, onde a escolha deve ser aleatória para garantir a segurança e a descentralização. Outro exemplo é em jogos de azar, onde a aleatoriedade é crucial para garantir a justiça do jogo. Em ambos os casos, a implementação inadequada pode levar a vulnerabilidades exploráveis. Por exemplo, um jogo de loteria na blockchain que não utiliza uma fonte segura de aleatoriedade pode ser manipulado por jogadores mal-intencionados.
+As funções são blocos de código que executam ações específicas e podem modificar o estado do contrato. Elas são a principal forma de interação com o contrato.
 
-   - **Soluções e Melhores Práticas**: Para implementar aleatoriedade de forma segura, é recomendado o uso de oráculos, que são serviços externos que fornecem dados aleatórios seguros para contratos inteligentes. Além disso, técnicas criptográficas, como a função hash, podem ser utilizadas para gerar números aleatórios de forma mais segura. Por exemplo, o uso de oráculos como Chainlink pode fornecer uma fonte confiável de aleatoriedade. Outra prática é combinar múltiplas fontes de aleatoriedade para aumentar a segurança.
+- **Funções Públicas:** Podem ser chamadas por qualquer pessoa. Devem ser usadas com cautela para evitar acessos indesejados.
 
-   - **Ferramentas e Recursos**: Existem várias ferramentas e bibliotecas que podem auxiliar na implementação de aleatoriedade segura em contratos inteligentes. Por exemplo, a biblioteca OpenZeppelin oferece contratos pré-construídos que podem ser utilizados para gerar números aleatórios de forma mais segura. Além disso, recursos como documentação e tutoriais sobre o uso de oráculos podem ser valiosos. Um exemplo de ferramenta é o VRF (Verifiable Random Function) da Chainlink, que garante que os números aleatórios gerados sejam verificáveis e seguros.
+  - **Exemplo:**
+    ```solidity
+    function depositar(uint256 valor) public {
+        saldo += valor;
+    }
+    ```
 
-   - **Exercícios Práticos**: Para testar seu conhecimento, implemente um contrato inteligente que utilize um oráculo para gerar um número aleatório e use esse número para simular um jogo de sorte. Desafie-se a garantir que o processo seja seguro e que o resultado não possa ser previsto ou manipulado por um atacante. Aqui está um exemplo de código básico usando Chainlink VRF:
+- **Funções Privadas:** Só podem ser chamadas de dentro do contrato. São úteis para lógica interna que não deve ser exposta.
 
-     ```solidity
-     // SPDX-License-Identifier: MIT
-     pragma solidity ^0.8.0;
+  - **Exemplo:**
+    ```solidity
+    function calcularTaxa(uint256 valor) private pure returns (uint256) {
+        return valor / 100;
+    }
+    ```
 
-     import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
+- **Funções de Visualização (View):** Não alteram o estado do contrato e podem ser chamadas sem custo de gas.
 
-     contract RandomNumberGame is VRFConsumerBase {
-         bytes32 internal keyHash;
-         uint256 internal fee;
-         uint256 public randomResult;
+  - **Exemplo:**
+    ```solidity
+    function obterSaldo() public view returns (uint256) {
+        return saldo;
+    }
+    ```
 
-         constructor()
-             VRFConsumerBase(
-                 0xD3d4fE5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f5f, // VRF Coordinator
-                 0x514910771AF9Ca656af840dff83E8264EcF986CA  // LINK Token
-             )
-         {
-             keyHash = 0x6c3699283bda56ad74f6b855546325b68d482e983852a7f8f3f0d7e5f5f5f5f5;
-             fee = 0.1 * 10 ** 18; // 0.1 LINK
-         }
+- **Funções Puras (Pure):** Não acessam nem modificam o estado do contrato.
+  - **Exemplo:**
+    ```solidity
+    function somar(uint256 a, uint256 b) public pure returns (uint256) {
+        return a + b;
+    }
+    ```
 
-         function getRandomNumber() public returns (bytes32 requestId) {
-             require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK");
-             return requestRandomness(keyHash, fee);
-         }
+## Modificadores de Função
 
-         function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
-             randomResult = randomness;
-         }
-     }
-     ```
+Modificadores são usados para alterar o comportamento de funções, adicionando condições ou restrições.
 
-     Este contrato utiliza o Chainlink VRF para gerar um número aleatório que pode ser usado em um jogo de sorte. Certifique-se de ter LINK suficiente para pagar a taxa de solicitação de aleatoriedade.
+- **Modificadores de Acesso:** Restringem quem pode chamar uma função.
+
+  - **Exemplo:**
+
+    ```solidity
+    modifier somenteProprietario() {
+        require(msg.sender == proprietario, "Acesso negado");
+        _;
+    }
+
+    function retirar(uint256 valor) public somenteProprietario {
+        saldo -= valor;
+    }
+    ```
+
+- **Modificadores de Validação:** Verificam condições antes de executar a função.
+
+  - **Exemplo:**
+
+    ```solidity
+    modifier validarValor(uint256 valor) {
+        require(valor > 0, "Valor deve ser maior que zero");
+        _;
+    }
+
+    function depositar(uint256 valor) public validarValor(valor) {
+        saldo += valor;
+    }
+    ```
+
+## Uso de `require` e `assert`
+
+- **`require`:** Verifica condições e reverte a transação se a condição não for atendida. É usado para validar entradas e garantir que as pré-condições sejam satisfeitas.
+
+  - **Exemplo:**
+    ```solidity
+    function transferir(address para, uint256 valor) public {
+        require(saldo >= valor, "Saldo insuficiente");
+        saldo -= valor;
+        // Lógica de transferência
+    }
+    ```
+
+- **`assert`:** Verifica condições internas e reverte a transação se a condição não for atendida. É usado para verificar invariantes e garantir que o contrato esteja em um estado consistente.
+  - **Exemplo:**
+    ```solidity
+    function atualizarSaldo(uint256 novoSaldo) internal {
+        saldo = novoSaldo;
+        assert(saldo >= 0);
+    }
+    ```
+
+## Boas Práticas de Uso
+
+Para garantir que o uso de funções e modificadores seja eficiente e seguro, siga estas boas práticas:
+
+- **Validação de Entradas:** Sempre valide as entradas do usuário para evitar erros e vulnerabilidades.
+- **Uso de Modificadores:** Utilize modificadores para implementar lógica de controle de acesso e evitar duplicação de código.
+- **Documentação de Funções:** Documente todas as funções e modificadores para facilitar a manutenção e auditoria do contrato.
+- **Reutilização de Código:** Utilize funções e modificadores para evitar duplicação de lógica e melhorar a legibilidade do código.

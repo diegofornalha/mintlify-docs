@@ -30,3 +30,113 @@
      ```
 
      Neste exemplo, os dados são armazenados de forma criptografada, e apenas o usuário que os armazenou pode recuperá-los. Certifique-se de que a criptografia seja feita fora do contrato, pois Solidity não suporta operações de criptografia complexas.
+
+# Herança e Interfaces em Solidity
+
+Nesta aula, vamos explorar os conceitos de herança e interfaces em Solidity, que são fundamentais para a reutilização de código e a definição de contratos padronizados.
+
+## Herança em Solidity
+
+A herança permite que um contrato herde propriedades e métodos de outro contrato, promovendo a reutilização de código e a organização lógica.
+
+- **Declaração de Herança:** Um contrato pode herdar de um ou mais contratos, utilizando a palavra-chave `is`.
+
+  - **Exemplo:**
+
+    ```solidity
+    contract Base {
+        function saudacao() public pure returns (string memory) {
+            return "Olá";
+        }
+    }
+
+    contract Derivado is Base {
+        // Herda a função saudacao
+    }
+    ```
+
+- **Sobrescrita de Funções:** Contratos derivados podem sobrescrever funções de contratos base para alterar ou estender sua funcionalidade.
+
+  - **Exemplo:**
+
+    ```solidity
+    contract Base {
+        function saudacao() public virtual pure returns (string memory) {
+            return "Olá";
+        }
+    }
+
+    contract Derivado is Base {
+        function saudacao() public override pure returns (string memory) {
+            return "Olá, Mundo!";
+        }
+    }
+    ```
+
+- **Construtores em Herança:** Construtores de contratos base podem ser chamados a partir de contratos derivados para inicializar o estado.
+
+  - **Exemplo:**
+
+    ```solidity
+    contract Base {
+        uint256 public valor;
+        constructor(uint256 _valor) {
+            valor = _valor;
+        }
+    }
+
+    contract Derivado is Base {
+        constructor(uint256 _valor) Base(_valor) {}
+    }
+    ```
+
+## Interfaces em Solidity
+
+Interfaces definem contratos que outros contratos devem implementar, garantindo que certas funções estejam presentes.
+
+- **Declaração de Interfaces:** Interfaces são declaradas usando a palavra-chave `interface` e contêm apenas assinaturas de funções.
+
+  - **Exemplo:**
+    ```solidity
+    interface IContrato {
+        function executar() external;
+    }
+    ```
+
+- **Implementação de Interfaces:** Contratos que implementam uma interface devem definir todas as funções declaradas na interface.
+  - **Exemplo:**
+    ```solidity
+    contract Implementacao is IContrato {
+        function executar() external override {
+            // Lógica da função
+        }
+    }
+    ```
+
+## Benefícios da Herança e Interfaces
+
+- **Reutilização de Código:** Herança permite que contratos compartilhem lógica comum, reduzindo a duplicação de código.
+- **Modularidade:** Interfaces promovem a modularidade, permitindo que diferentes contratos interajam de forma padronizada.
+- **Flexibilidade:** Herança e interfaces oferecem flexibilidade para estender e modificar a funcionalidade de contratos sem alterar o código original.
+
+## Boas Práticas de Uso
+
+Para garantir que o uso de herança e interfaces seja eficiente e seguro, siga estas boas práticas:
+
+- **Evite Herança Múltipla Complexa:** Herança múltipla pode introduzir complexidade e deve ser usada com cautela.
+- **Documente Interfaces:** Documente todas as interfaces para garantir que os desenvolvedores entendam como implementá-las corretamente.
+- **Use `virtual` e `override`:** Utilize as palavras-chave `virtual` e `override` para indicar claramente quais funções podem ser sobrescritas.
+
+## Exemplos Práticos
+
+- **Contrato de Token ERC-20:** Um exemplo de contrato que utiliza herança para implementar funcionalidades padrão de token.
+
+  ```solidity
+  import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+  contract MeuToken is ERC20 {
+      constructor() ERC20("MeuToken", "MTK") {
+          _mint(msg.sender, 1000 * 10 ** decimals());
+      }
+  }
+  ```
