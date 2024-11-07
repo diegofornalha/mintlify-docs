@@ -15,26 +15,6 @@
       "to": "#FF6347"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Suporte",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Painel",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "tabs": [
-    {
-      "name": "Auditoria em Solidity",
-      "url": "auditoria-solidity"
-    },
-    {
-      "name": "Nova Aba",
-      "url": "new-tab-url"
-    }
-  ],
   "navigation": [
     {
       "group": "Introdução",
