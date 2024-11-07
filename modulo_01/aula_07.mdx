@@ -3,14 +3,26 @@
 ### Vulnerabilidades Comuns
 
 - **SQL Injection:** Uma técnica de injeção de código que permite a um atacante interferir nas consultas que uma aplicação faz ao seu banco de dados. Isso pode resultar em acesso não autorizado a dados sensíveis, modificação ou exclusão de dados.
+
+  - **Prevenção:** Utilize consultas parametrizadas e ORM (Object-Relational Mapping) para evitar a injeção de SQL.
+  - **Impacto:** Pode levar à exposição de dados confidenciais e comprometer a integridade do banco de dados.
+
 - **Cross-Site Scripting (XSS):** Uma vulnerabilidade que permite a um atacante injetar scripts maliciosos em páginas web visualizadas por outros usuários. Isso pode levar ao roubo de cookies, credenciais de login e outros dados sensíveis.
+  - **Prevenção:** Sanitize e escape todas as entradas de usuário antes de exibi-las em páginas web.
+  - **Impacto:** Pode comprometer a segurança de contas de usuário e expor dados sensíveis.
 
 ## Riscos Específicos de Contratos Inteligentes
 
 ### Explorações Comuns
 
 - **Reentrância:** Uma vulnerabilidade onde um contrato é chamado recursivamente antes que a execução anterior seja concluída, permitindo que um atacante drene fundos do contrato.
+
+  - **Prevenção:** Utilize padrões de segurança como o "check-effects-interactions" e mutexes para prevenir reentrância.
+  - **Impacto:** Pode resultar na perda de todos os fundos do contrato.
+
 - **Underflow/Overflow:** Erros aritméticos que ocorrem quando uma operação resulta em um valor fora dos limites permitidos para um tipo de dado, potencialmente permitindo manipulação de valores e exploração de contratos.
+  - **Prevenção:** Utilize bibliotecas como SafeMath para realizar operações aritméticas seguras.
+  - **Impacto:** Pode permitir que atacantes manipulem saldos e outras variáveis críticas.
 
 ## Desafios de Segurança
 
