@@ -2,25 +2,40 @@
 
 ### Controle Centralizado
 
-Em projetos centralizados, o controle é mantido por uma única entidade ou um grupo restrito de administradores. Isso pode levar a falhas administrativas, onde erros humanos ou decisões inadequadas podem comprometer a segurança do sistema.
+Em projetos centralizados, o controle é mantido por uma única entidade ou um grupo restrito de administradores. Isso pode levar a falhas administrativas, onde erros humanos ou decisões inadequadas podem comprometer a segurança do sistema. A centralização do controle também pode resultar em um único ponto de falha, tornando o sistema vulnerável a ataques direcionados.
+
+- **Vulnerabilidades Internas:** Acesso privilegiado pode ser explorado por insiders mal-intencionados.
+- **Decisões de Segurança:** A segurança depende das decisões de um pequeno grupo, que pode não ter a expertise necessária.
 
 ### Dependência de Provedores de Segurança
 
 Projetos centralizados frequentemente dependem de provedores de segurança externos para proteger seus dados e sistemas. Essa dependência pode ser um ponto fraco, pois qualquer falha ou comprometimento do provedor pode afetar diretamente a segurança do projeto.
 
+- **Risco de Terceiros:** A segurança do projeto está atrelada à segurança dos provedores externos.
+- **Falta de Controle:** A equipe interna pode ter pouco controle sobre as medidas de segurança implementadas pelos provedores.
+
 ## Riscos de Segurança em Projetos Descentralizados
 
 ### Maior Exposição ao Público
 
-Projetos descentralizados, por sua natureza, são mais expostos ao público. Isso significa que qualquer pessoa pode interagir com o sistema, aumentando o risco de ataques maliciosos.
+Projetos descentralizados, por sua natureza, são mais expostos ao público. Isso significa que qualquer pessoa pode interagir com o sistema, aumentando o risco de ataques maliciosos. A transparência inerente à descentralização pode ser uma vantagem, mas também expõe o sistema a potenciais atacantes.
+
+- **Ataques Externos:** Abertura para interações externas pode ser explorada por atacantes.
+- **Desafios de Monitoramento:** Monitorar e responder a atividades maliciosas pode ser mais complexo.
 
 ### Imutabilidade do Código
 
 A imutabilidade do código em projetos descentralizados garante que uma vez implantado, o código não pode ser alterado. Embora isso aumente a confiança na integridade do sistema, também significa que qualquer vulnerabilidade presente no código não pode ser corrigida após a implantação.
 
+- **Risco de Vulnerabilidades Permanentes:** Erros no código permanecem indefinidamente.
+- **Necessidade de Auditorias Rigorosas:** Auditorias completas são essenciais antes do deployment.
+
 ### Importância da Transparência
 
 A transparência é uma característica fundamental dos projetos descentralizados, pois todos os dados e transações são visíveis na blockchain. Isso pode ser uma vantagem em termos de auditoria e verificação, mas também pode expor informações sensíveis a potenciais atacantes.
+
+- **Verificação Pública:** Facilita a auditoria e a verificação por terceiros.
+- **Exposição de Dados:** Informações sensíveis podem ser acessadas por qualquer pessoa.
 
 ## Vantagens e Desvantagens em Termos de Segurança
 
@@ -35,4 +50,4 @@ A transparência é uma característica fundamental dos projetos descentralizado
   - **Vantagens:** Transparência e imutabilidade aumentam a confiança na integridade do sistema. A descentralização reduz o risco de um único ponto de falha.
   - **Desvantagens:** Maior exposição ao público e impossibilidade de corrigir vulnerabilidades após a implantação do código.
 
-A comparação entre sistemas centralizados e descentralizados em termos de segurança deve levar em consideração esses fatores para determinar a abordagem mais adequada para cada projeto específico.
+A comparação entre sistemas centralizados e descentralizados em termos de segurança deve levar em consideração esses fatores para determinar a abordagem mais adequada para cada projeto específico. A escolha entre centralização e descentralização depende das necessidades de segurança, controle e transparência de cada projeto.
