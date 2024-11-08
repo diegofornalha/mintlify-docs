@@ -17,6 +17,22 @@
   },
   "navigation": [
     {
+      "group": "SEMANA 01",
+      "pages": [
+        "VIDEO_00/video_01",
+        "VIDEO_00/video_02",
+        "VIDEO_00/video_03",
+        "VIDEO_00/video_04",
+        "VIDEO_00/video_05",
+        "VIDEO_00/video_06",
+        "VIDEO_00/video_07"
+      ]
+    },
+    {
+      "group": "SEMANA 02",
+      "pages": ["VIDEO_01/video_01", "VIDEO_01/video_02", "VIDEO_01/video_03"]
+    },
+    {
       "group": "Auditoria em Solidity",
       "pages": ["introduction", "quickstart", "development"]
     },
