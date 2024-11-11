@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Kit Inicial",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.webp",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -17,39 +17,8 @@
   },
   "navigation": [
     {
-      "group": "SEMANA 01",
-      "pages": [
-        "VIDEO_00/video_01",
-        "VIDEO_00/video_02",
-        "VIDEO_00/video_03",
-        "VIDEO_00/video_04",
-        "VIDEO_00/video_05",
-        "VIDEO_00/video_06",
-        "VIDEO_00/video_07"
-      ]
-    },
-    {
       "group": "SEMANA 02",
       "pages": ["VIDEO_01/video_01", "VIDEO_01/video_02", "VIDEO_01/video_03"]
-    },
-    {
-      "group": "Auditoria em Solidity",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
-      "group": "Essenciais",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "Documentação da API",
-      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Módulo 01",
@@ -206,5 +175,47 @@
     "x": "https://x.com/mintlify",
     "github": "https://github.com/mintlify",
     "linkedin": "https://linkedin.com/company/mintlify"
-  }
+  },
+  "tabs": [
+    {
+      "name": "01",
+      "url": "modulo_01"
+    },
+    {
+      "name": "02",
+      "url": "modulo_02"
+    },
+    {
+      "name": "03",
+      "url": "modulo_03"
+    },
+    {
+      "name": "04",
+      "url": "modulo_04"
+    },
+    {
+      "name": "05",
+      "url": "modulo_05"
+    },
+    {
+      "name": "06",
+      "url": "modulo_06"
+    },
+    {
+      "name": "07",
+      "url": "modulo_07"
+    },
+    {
+      "name": "08",
+      "url": "modulo_08"
+    },
+    {
+      "name": "09",
+      "url": "modulo_09"
+    },
+    {
+      "name": "10",
+      "url": "modulo_10"
+    }
+  ]
 }
