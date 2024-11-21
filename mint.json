@@ -18,7 +18,33 @@
   "navigation": [
     {
       "group": "SEMANA 02",
-      "pages": ["VIDEO_01/video_01", "VIDEO_01/video_02", "VIDEO_01/video_03"]
+      "pages": [
+        "semana_02/video_01",
+        "semana_02/video_02",
+        "semana_02/video_03",
+        "semana_02/video_04",
+        "semana_02/video_05"
+      ]
+    },
+    {
+      "group": "SEMANA 03",
+      "pages": [
+        "semana_03/video_01",
+        "semana_03/video_02",
+        "semana_03/video_03",
+        "semana_03/video_04",
+        "semana_03/video_05"
+      ]
+    },
+    {
+      "group": "SEMANA 04",
+      "pages": [
+        "semana_04/video_01",
+        "semana_04/video_02",
+        "semana_04/video_03",
+        "semana_04/video_04",
+        "semana_04/video_05"
+      ]
     },
     {
       "group": "Módulo 01",
